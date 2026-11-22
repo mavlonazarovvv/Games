@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>Игровой клуб</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#0b0d17;--t:#f1f3ff;--m:#8a90b0;--a:#7c6cff;--a2:#ff6cc3;--g:#2ee59d;--r:#ff5d73;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:radial-gradient(circle at 15% -10%,#2b2060,transparent 50%),radial-gradient(circle at 100% 5%,#4a1f55,transparent 40%),var(--bg);background-attachment:fixed;color:var(--t);font:16px/1.4 system-ui,sans-serif;min-height:100vh}
+#app{max-width:560px;margin:auto;padding:0 14px 96px}
+header{display:flex;align-items:center;gap:12px;padding:14px 0;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
+header>div:nth-child(2){flex:1;line-height:1.2}
+.av{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-weight:800}
+.bal{background:#ffffff14;border:1px solid #ffffff1f;padding:8px 14px;border-radius:99px;font-weight:700;color:var(--g)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:#0e1020ee;backdrop-filter:blur(16px);border-top:1px solid #ffffff14;z-index:9}
+nav button{flex:1;max-width:110px;background:none;color:var(--m);border-radius:14px;padding:6px 0;font-size:11px;font-weight:600}
+nav button i{display:block;font-style:normal;font-size:22px}
+nav button.on{color:#fff;background:#ffffff1a}
+.card{background:linear-gradient(180deg,#ffffff0e,#ffffff06);border:1px solid #ffffff14;border-radius:20px;padding:16px;margin:12px 0}
+h2,h3,h4{margin:0 0 10px}
+button{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border:0;border-radius:14px;padding:12px 16px;font:inherit;font-weight:600;cursor:pointer;transition:transform .1s}
+button:active{transform:scale(.96)}button.s{background:#ffffff1a}button.g{background:linear-gradient(135deg,#2ee59d,#0fa3b1);color:#042}button.r{background:var(--r)}
+input{width:100%;padding:12px 14px;border-radius:14px;border:1px solid #ffffff1f;background:#ffffff0d;color:var(--t);font:inherit;margin:5px 0;outline:0}
+input:focus{border-color:var(--a)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.m{color:var(--m);font-size:14px}.err{color:var(--r)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gc{border-radius:22px;padding:18px 10px;text-align:center;color:#fff;cursor:pointer;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:4px;box-shadow:0 8px 24px #0006}
+.gc b{font-size:42px}.gc span{font-weight:700}.gc small{opacity:.85;font-size:12px}.gc:active{transform:scale(.96)}
+.b4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#ffffff0d;padding:7px;border-radius:16px;touch-action:none}
+.t{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#ffffff10;font-weight:800;font-size:22px}
+.b3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:auto}
+.b3 div{aspect-ratio:1;background:#ffffff12;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:44px;cursor:pointer}
+table{width:100%;border-collapse:collapse}td,th{padding:8px 4px;text-align:left;font-size:14px;border-bottom:1px solid #ffffff12}
+canvas{width:100%;max-width:340px;display:block;margin:auto;background:#ffffff0a;border-radius:16px}
+.bb{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;background:#ffffff0a;padding:6px;border-radius:14px}
+.bb div{aspect-ratio:1;border-radius:6px;background:#ffffff0f}.bb .f,.pp i.f{background:linear-gradient(135deg,var(--a),var(--a2))}
+.pcs{display:flex;justify-content:space-around;margin-top:12px;min-height:70px;align-items:center}
+.pp{display:grid;gap:2px;padding:8px;border-radius:12px;border:2px solid transparent}.pp.sel{border-color:#ffd166;background:#ffffff14}.pp i{width:14px;height:14px;border-radius:4px}
+.ck{display:grid;grid-template-columns:repeat(8,1fr);border-radius:14px;overflow:hidden;max-width:360px;margin:auto}
+.ck div{aspect-ratio:1;display:flex;align-items:center;justify-content:center}.lt{background:#4a517a}.dk{background:#232845}.sl{outline:3px solid #ffd166;outline-offset:-3px}.tg{background:#2ee59d66!important}
+.pc{width:78%;height:78%;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#ffd166;box-shadow:0 3px 6px #0008}
+.pc.w{background:radial-gradient(circle at 30% 30%,#fff,#aab)}.pc.b{background:radial-gradient(circle at 30% 30%,#666,#111)}
+.dp{display:grid;grid-template-columns:repeat(3,76px);gap:8px;justify-content:center;margin-top:14px}.dp button{height:62px;font-size:26px;padding:0}
+canvas,.pp{touch-action:none}.card{animation:in .3s}@keyframes in{from{opacity:0;transform:translateY(8px)}}
+header{background:linear-gradient(#0b0d17cc,transparent);margin:0 -14px;padding-left:14px;padding-right:14px}
+.announce{border:1px solid #ffd16666;background:linear-gradient(135deg,#ffd16618,#ff8a5c12);border-radius:16px;padding:12px 14px;margin:10px 0 14px}
+.announce b{color:#ffd166}
+.durak-screen{position:fixed;inset:0;z-index:20;background:radial-gradient(ellipse at center,#176447 0%,#0b382c 65%,#071f1a 100%);padding:env(safe-area-inset-top) 10px env(safe-area-inset-bottom);overflow:auto;display:flex;flex-direction:column}
+.durak-screen .durak-head{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#fff;padding:6px 2px}
+.durak-screen .durak-table{flex:1;min-height:180px;border:8px solid #70452d;border-radius:28px;background:radial-gradient(ellipse,#16704e,#0c4b37);box-shadow:inset 0 0 25px #001b12,0 10px 30px #0008;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+.durak-screen .tbl{background:#062e2344;border:1px solid #ffffff22;min-height:120px;justify-content:center;align-content:center;gap:10px}
+.durak-screen .hand{justify-content:center;align-items:flex-end;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;padding:10px 3px 14px;min-height:112px}
+.durak-screen .cd{width:clamp(42px,10vw,68px);height:clamp(64px,15vw,100px);min-width:clamp(42px,10vw,68px);aspect-ratio:5/7;border:1px solid #d8d8d8;border-radius:9px;background:linear-gradient(145deg,#fff,#f0eee8);color:#17202a;padding:5px 3px;margin:0;font-size:clamp(13px,3vw,18px);box-shadow:0 4px 9px #001a12aa;display:flex;flex-direction:column;justify-content:space-between;align-items:center;line-height:1.05}
+.durak-screen .cd .suit{font-size:clamp(17px,4vw,25px);line-height:1}
+.durak-screen .cd.rd{color:#d9273e}
+.durak-screen .cd.face{background:linear-gradient(145deg,#fff8df,#e9d6a2);border:2px solid #c39b4b}
+.durak-screen .cd.selcard{transform:translateY(-9px);outline:3px solid #ffd166}
+.durak-screen .pr{align-items:center}
+.durak-screen .pr .cd+.cd{margin-top:0;margin-left:-22px}
+.durak-screen .durak-actions{display:flex;gap:8px;justify-content:center;padding:7px 0}
+.durak-screen .durak-actions button{min-width:110px}
+.durak-screen .durak-players{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:8px 0}
+.durak-screen .durak-player{background:#ffffff20;border:1px solid #ffffff30;border-radius:20px;padding:5px 10px;color:#fff;font-size:12px}
+.durak-screen .durak-player.me{border-color:#ffd166;color:#ffd166}
+.durak-screen .durak-status{color:#fff;text-align:center;font-weight:700;padding:8px}
+.durak-screen .durak-back{background:#ffffff22;border:1px solid #ffffff33}
+@media(min-width:700px){.durak-screen{padding-left:max(24px,calc((100vw - 1100px)/2));padding-right:max(24px,calc((100vw - 1100px)/2))}.durak-screen .hand{min-height:130px}}
+.cd{background:#fff;color:#111;padding:9px 5px;min-width:44px;font-weight:800;border-radius:9px;margin:2px;font-size:15px}.cd.rd{color:#e5484d}.tbl{display:flex;flex-wrap:wrap;gap:8px;min-height:80px;padding:10px;background:#ffffff0a;border-radius:14px;margin:8px 0}.pr{display:flex;flex-direction:column}.pr .cd+.cd{margin-top:-20px;margin-left:14px;box-shadow:0 0 0 2px #7c6cff}.hand{display:flex;flex-wrap:wrap;margin-top:10px}.sel2{outline:2px solid #ffd166;border-radius:10px}
+</style></head><body><div id="app"></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const CFG={apiKey:"AIzaSyD8WpXPYwLhywGX1GcW4xPhA7nfR_Rh6xY",authDomain:"games-club-70b7c.firebaseapp.com",projectId:"games-club-70b7c",storageBucket:"games-club-70b7c.firebasestorage.app",messagingSenderId:"789798637529",appId:"1:789798637529:web:ac36695a545ad208b9d3c8"};
+const ADM='mavlonazarov',AH='70f279317a2d1a840e38d8d33367f2191a0ded72672d3f82226f0ac57b81d6c5';
+const $=s=>document.querySelector(s),A=$('#app');
+let db,me=null,U=null,tab='games',stop=null,unU=null,note='';
+const H=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+const ud=l=>db.doc('users/'+l);
+const addBal=n=>ud(me).update({bal:U.bal+n});
+const LS={g:()=>{try{return JSON.parse(localStorage.getItem('gc')||'null')}catch(e){return null}},s:v=>{try{localStorage.setItem('gc',JSON.stringify(v))}catch(e){}}};
+function cleanup(){if(stop){stop();stop=null}}
+async function init(){
+ A.innerHTML='<p class="m">Подключение…</p>';
+ try{firebase.initializeApp(CFG);db=firebase.firestore()}catch(e){console.error(e)}
+ if(!db){A.innerHTML='<div class="card">Не удалось подключиться к базе данных. Проверь интернет.</div>';return}
+ const s=LS.g();if(s)await login(s.l,s.p,true);else authView()}
+function authView(msg){cleanup();A.innerHTML=`<div class="card"><h2>🎮 Игровой клуб</h2><p class="m">Регистрация: сразу 500 монет для ставок</p>
+<input id="l" placeholder="Логин (латиница/цифры)" autocapitalize="off"><input id="p" type="password" placeholder="Пароль">
+<p class="err">${msg||''}</p><div class="row"><button id="in">Войти</button><button class="s" id="rg">Регистрация</button></div></div>`;
+ $('#in').onclick=()=>login($('#l').value.trim().toLowerCase(),$('#p').value);
+ $('#rg').onclick=reg}
+async function reg(){const l=$('#l').value.trim().toLowerCase(),p=$('#p').value;
+ if(!/^[a-z0-9_]{3,16}$/.test(l)||p.length<4||l===ADM)return authView('Логин 3–16 символов (a-z, 0-9, _), пароль от 4');
+ if((await ud(l).get()).exists)return authView('Такой логин занят');
+ await ud(l).set({pw:await H(l+':'+p),bal:500,loan:0,due:0,blocked:false,ts:Date.now()});
+ login(l,p)}
+async function login(l,p,auto){
+ const h=await H(l+':'+p);let s=await ud(l).get();
+ if(l===ADM){if(h!==(s.exists?s.data().pw:AH))return authView('Неверный логин или пароль');
+  if(!s.exists)await ud(l).set({pw:h,bal:0,loan:0,due:0,blocked:false,ts:Date.now(),admin:true})}
+ else if(!s.exists||s.data().pw!==h){LS.s(null);return authView('Неверный логин или пароль')}
+ me=l;LS.s({l,p});tab='games';
+ unU=ud(l).onSnapshot(x=>{U=x.data();checkDue();if(!stop||tab!=='play')render()});}
+async function checkDue(){if(U&&U.loan>0&&!U.blocked&&Date.now()>U.due){U.blocked=true;
+ await ud(me).update({blocked:true});await db.doc('alerts/'+me).set({login:me,amt:U.loan,ts:Date.now()})}}
+const NAV=[['games','🎮','Игры'],['top','🏆','Топ'],['chat','💬','Чат'],['profile','👤','Профиль']];
+function shell(inner){const nv=(me===ADM?NAV.filter(n=>n[0]!='profile'):NAV).concat(me===ADM?[['admin','🛠','Админ']]:[]);
+ A.innerHTML=`<header><div class="av">${me[0].toUpperCase()}</div><div><b>${me}</b><div class="m">Игровой клуб</div></div><div class="bal">💰 ${U.bal}</div></header><main id="v">${inner}</main><nav>${nv.map(n=>`<button data-t="${n[0]}" class="${tab==n[0]||(tab=='play'&&n[0]=='games')?'on':''}"><i>${n[1]}</i>${n[2]}</button>`).join('')}</nav>`;
+ A.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{cleanup();tab=b.dataset.t;render()})}
+const GAMES=[['Крестики-нолики','❌','Онлайн · ставки','#ff6cc3','#7c6cff',ttt],['Шашки','⚫','Онлайн · ставки','#ffb86c','#ff5d73',checkers],['Дурак','🃏','Онлайн · 2–8 игроков','#f7971e','#ffd200',durak],['2048','🔢','Одиночная','#2ee59d','#0fa3b1',g2048],['Змейка','🐍','Одиночная','#7cf29a','#1fb26b',snake],['Блок Бласт','🧱','Одиночная','#6cc4ff','#7c6cff',blast],['Кликер','👆','10 секунд','#ffd166','#ff8a5c',clicker],['Викторина','❓','Для всех','#c471f5','#fa71cd',quiz]];
+function render(){if(!U)return;cleanup();
+ if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return leaders();if(tab=='chat')return chat();if(tab=='play')return;
+ shell(`${U.announcement?`<div class="announce"><b>📢 Объявление для всех</b><div>${esc(U.announcement)}</div></div>`:''}<h2>Выбери игру</h2><div class="grid">${GAMES.map((g,i)=>`<div class="gc" data-i="${i}" style="background:linear-gradient(135deg,${g[3]},${g[4]})"><b>${g[1]}</b><span>${g[0]}</span><small>${g[2]}</small></div>`).join('')}</div>`);
+ A.querySelectorAll('[data-i]').forEach(c=>c.onclick=()=>{tab='play';shell('<button class="s" id="bk" style="margin-bottom:6px">← Назад</button><div id="g"></div>');$('#bk').onclick=()=>{cleanup();tab='games';render()};GAMES[c.dataset.i][5]($('#g'))})}
+function profile(){const left=U.loan?Math.max(0,U.due-Date.now()):0,hrs=Math.ceil(left/36e5);
+ shell(`<div class="card"><h3>Баланс: ${U.bal} 💰</h3>${U.loan?`<p>Долг: <b>${U.loan}</b>. Осталось ~${hrs} ч.</p><button class="g" id="rp">Вернуть кредит</button>`:
+ U.blocked?'<p class="err">Кредит заблокирован. Админ уведомлён.</p>':`<p class="m">Кредит до 1000 монет на 1 день. Не вернёшь — больше не дадим.</p><input id="la" type="number" min="1" max="1000" placeholder="Сколько взять (1–1000)"><button id="ln" style="width:100%;margin-top:6px">Взять кредит</button>`}
+ ${U.loan&&U.blocked?'<p class="err">Срок вышел, админ уведомлён.</p>':''}<p class="err">${note}</p></div><div class="card"><h3>💸 Перевод игроку</h3><input id="tl" placeholder="Ник игрока" autocapitalize="off"><input id="ta" type="number" placeholder="Сумма"><button id="tx" class="g" style="width:100%;margin-top:6px">Отправить</button></div><button class="s" id="lo">Выйти</button>`);
+ const ln=$('#ln');if(ln)ln.onclick=()=>{const a=+$('#la').value|0;if(a<1||a>1000){note='Сумма от 1 до 1000';return render()}note='';ud(me).update({bal:U.bal+a,loan:a,due:Date.now()+864e5})};
+ const rp=$('#rp');if(rp)rp.onclick=async()=>{if(U.bal<U.loan){note='Не хватает монет';return render()}note='';await ud(me).update({bal:U.bal-U.loan,loan:0,due:0,blocked:false});await db.doc('alerts/'+me).delete().catch(()=>{})};
+ $('#tx').onclick=async()=>{const l=$('#tl').value.trim().toLowerCase(),a=+$('#ta').value|0;if(!l||l===me||a<1||a>U.bal||!(await ud(l).get()).exists){note='Проверь ник и сумму';return render()}await ud(l).update({bal:firebase.firestore.FieldValue.increment(a)});await ud(me).update({bal:U.bal-a});note='Отправлено '+a+' → '+l;render()};
+ $('#lo').onclick=()=>{LS.s(null);unU&&unU();me=U=null;authView()}}
+function admin(){window._al=[];window._d=null;shell('<p class="m">Загрузка…</p>');let u1=db.collection('users').onSnapshot(us=>{const draw=()=>{if(tab!=='admin')return;const al=window._al||[];
+ const L=us.docs.filter(d=>d.id!==ADM);$('#v').innerHTML=`<div class="card"><h3>Зарегистрировано: ${L.length}</h3>
+<div class="row"><input id="am" type="number" placeholder="Сумма"><button class="g" id="tp">Пополнить баланс</button></div></div>
+<div class="card"><h3>🔔 Должники (${al.length})</h3>${al.map(a=>`<p><b>${a.login}</b> не вернул ${a.amt}<br><button data-u="${a.login}">Разблокировать</button> <button class="r" data-k="${a.login}">Оставить</button></p>`).join('')||'<p class="m">Нет</p>'}</div>
+<div class="card"><h3>📢 Объявление на главном экране</h3><input id="ann" maxlength="240" placeholder="Текст объявления" value="${esc(U.announcement||'')}"><div class="row"><button id="as" class="g">Опубликовать</button><button id="ac" class="s">Убрать</button></div></div>
+ <div class="card"><h3>💰 Мой баланс администратора</h3><p>Сейчас: <b>${U.bal}</b></p><button id="zero" class="r">Обнулить мой баланс</button></div>
+ <div class="card"><h3>🔑 Сменить пароль</h3><input id="pl" placeholder="Логин (свой или участника)"><input id="pp" placeholder="Новый пароль"><button id="pw">Сменить</button></div><div class="card"><table><tr><th>Логин</th><th>Баланс</th><th>Долг</th></tr>${L.map(d=>{const x=d.data();return`<tr><td>${d.id}${x.blocked?' 🚫':''}</td><td>${x.bal}</td><td>${x.loan}</td></tr>`}).join('')}</table></div>`;
+ $('#tp').onclick=()=>{const n=+$('#am').value;if(n>0)addBal(n)};
+ $('#pw').onclick=async()=>{const l=$('#pl').value.trim().toLowerCase(),p=$('#pp').value;if(p.length<4||!(await ud(l).get()).exists){$('#pw').textContent='Ошибка: логин или пароль';return}await ud(l).update({pw:await H(l+':'+p)});if(l===ADM)LS.s({l,p});$('#pw').textContent='Готово ✓'};
+ A.querySelectorAll('[data-u]').forEach(b=>b.onclick=async()=>{await ud(b.dataset.u).update({blocked:false,due:Date.now()+864e5});db.doc('alerts/'+b.dataset.u).delete()});
+ A.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>db.doc('alerts/'+b.dataset.k).delete())};
+ stop=()=>{u1();u2()};window._d=draw;draw()});
+ const u2=db.collection('alerts').onSnapshot(s=>{window._al=s.docs.map(d=>d.data());if(window._d)window._d()});
+}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function rec(g,s){const r=U.rec||{};if(s>(r[g]||0))ud(me).update({rec:{...r,[g]:s}})}
+function leaders(){shell('<p class="m">Загрузка…</p>');stop=db.collection('users').onSnapshot(us=>{const v=$('#v');if(!v)return;
+ v.innerHTML=['2048','Змейка','Блок Бласт','Кликер'].map(g=>{const L=us.docs.map(d=>[d.id,((d.data().rec||{})[g])||0]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10);
+ return `<div class="card"><h3>🏆 ${g}</h3><table>${L.map((x,i)=>`<tr><td>${i+1} ${['🥇','🥈','🥉'][i]||''}</td><td>${x[0]}${x[0]==me?' (ты)':''}</td><td><b>${x[1]}</b></td></tr>`).join('')||'<tr><td class="m">Пока нет рекордов</td></tr>'}</table></div>`}).join('')})}
+function chat(){shell('<div class="card"><div id="ms" style="height:46vh;overflow:auto"></div></div><div class="row"><input id="ct" placeholder="Кому (пусто = всем)" maxlength="16" style="flex:0 0 38%"><input id="ci" maxlength="300" placeholder="Сообщение"><button id="cs" style="flex:0 0 auto">➤</button></div>');
+ const send=async()=>{const t=$('#ci').value.trim(),to=$('#ct').value.trim().toLowerCase();if(!t)return;if(to&&!(await ud(to).get()).exists){$('#ct').value='';$('#ct').placeholder='Нет такого игрока';return}$('#ci').value='';db.doc('chat/'+Date.now()+'_'+me).set({u:me,to,t,ts:Date.now()})};
+ $('#cs').onclick=send;$('#ci').onkeydown=e=>{if(e.key=='Enter')send()};
+ stop=db.collection('chat').onSnapshot(s=>{const L=s.docs.map(d=>d.data()).filter(x=>!x.to||x.to==me||x.u==me).sort((a,b)=>a.ts-b.ts).slice(-60),m=$('#ms');if(!m)return;
+  m.innerHTML=L.map(x=>`<p style="margin:5px 0"><b style="color:${x.u==me?'var(--a)':'var(--g)'}">${esc(x.u)}</b>${x.to?` <span class="err">🔒 → ${x.to==me?'тебе':esc(x.to)}</span>`:''} <span class="m">${new Date(x.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</span><br>${esc(x.t)}</p>`).join('')||'<span class="m">Пишите первыми</span>';m.scrollTop=m.scrollHeight})}
+/* ---------- ИГРЫ ---------- */
+function blast(el){const P=[[[1]],[[1,1]],[[1],[1]],[[1,1,1]],[[1],[1],[1]],[[1,1],[1,1]],[[1,1,1],[1,1,1],[1,1,1]],[[1,0],[1,0],[1,1]],[[1,1],[1,0]],[[1,1,1,1]],[[1,1],[0,1]]];
+ let g=Array(64).fill(0),pc=[],sel=-1,sc=0;const np=()=>{pc=[0,1,2].map(()=>P[Math.random()*P.length|0])};np();
+ const fits=(p,x,y)=>p.every((r,j)=>r.every((v,i)=>!v||(x+i<8&&y+j<8&&!g[(y+j)*8+x+i])));
+ const can=()=>pc.some(p=>p&&g.some((_,k)=>fits(p,k%8,k/8|0)));
+ function put(x,y){const p=pc[sel];if(!p||!fits(p,x,y))return;p.forEach((r,j)=>r.forEach((v,i)=>{if(v)g[(y+j)*8+x+i]=1}));sc+=p.flat().filter(Boolean).length;pc[sel]=0;sel=-1;
+  const R=[],C=[],n=[0,1,2,3,4,5,6,7];n.forEach(i=>{if(n.every(k=>g[i*8+k]))R.push(i);if(n.every(k=>g[k*8+i]))C.push(i)});
+  R.forEach(i=>n.forEach(k=>g[i*8+k]=0));C.forEach(i=>n.forEach(k=>g[k*8+i]=0));const L=R.length+C.length;sc+=L*L*10;
+  if(!pc.some(Boolean))np();rec('Блок Бласт',sc);draw()}
+ function draw(){const dead=!can();el.innerHTML=`<div class="card"><div class="top"><b>🧱 Блок Бласт</b><span>Очки: ${sc} · рекорд ${(U.rec||{})['Блок Бласт']||0}</span></div><div class="bb">${g.map((v,k)=>`<div class="${v?'f':''}" data-c="${k}"></div>`).join('')}</div><div class="pcs">${pc.map((p,i)=>p?`<div class="pp ${sel==i?'sel':''}" data-p="${i}" style="grid-template-columns:repeat(${p[0].length},14px)">${p.flat().map(v=>`<i class="${v?'f':''}"></i>`).join('')}</div>`:'<div class="pp"></div>').join('')}</div><p class="m" style="text-align:center">${dead?'<b class="err">Места нет, игра окончена</b>':'Перетащи фигуру на поле'}</p>${dead?'<button id="rs" style="width:100%">Заново</button>':''}</div>`;
+  el.querySelectorAll('[data-p]').forEach(d=>d.onpointerdown=e=>{e.preventDefault();sel=+d.dataset.p;const p=pc[sel],cs=el.querySelector('.bb div').getBoundingClientRect().width;
+   const gh=document.createElement('div');gh.style.cssText=`position:fixed;z-index:99;pointer-events:none;display:grid;gap:3px;grid-template-columns:repeat(${p[0].length},${cs}px);grid-auto-rows:${cs}px`;
+   gh.innerHTML=p.flat().map(v=>`<i style="border-radius:6px;${v?'background:linear-gradient(135deg,#7c6cff,#ff6cc3)':''}"></i>`).join('');document.body.appendChild(gh);
+   const mv=ev=>{gh.style.left=ev.clientX-cs*p[0].length/2+'px';gh.style.top=ev.clientY-cs*p.length-60+'px'};mv(e);
+   const up=ev=>{document.removeEventListener('pointermove',mv);document.removeEventListener('pointerup',up);const r=gh.getBoundingClientRect();gh.remove();const t=document.elementFromPoint(r.left+cs/2,r.top+cs/2);if(t&&t.dataset.c!==undefined){const k=+t.dataset.c;put(k%8,k/8|0)}};
+   document.addEventListener('pointermove',mv);document.addEventListener('pointerup',up)});
+  el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const k=+d.dataset.c;put(k%8,k/8|0)});
+  const rs=$('#rs');if(rs)rs.onclick=()=>{g=Array(64).fill(0);sc=0;sel=-1;np();draw()}}
+ draw()}
+function checkers(el){let u1,u2,msg='',sel=-1,paid=false;stop=()=>{u1&&u1();u2&&u2()};
+ const lo=s=>s.toLowerCase();
+ function mv(bd,i,m,co){const r=i/8|0,c=i%8,k=bd[i]==bd[i].toUpperCase(),dr=k?[-1,1]:m=='w'?[-1]:[1],out=[];
+  for(const a of dr)for(const b of[-1,1]){const r1=r+a,c1=c+b;if(r1<0||r1>7||c1<0||c1>7)continue;const t=bd[r1*8+c1];
+   if(t=='-'){if(!co)out.push([r1*8+c1,-1])}
+   else if(lo(t)!=m){const r2=r+2*a,c2=c+2*b;if(r2>=0&&r2<8&&c2>=0&&c2<8&&bd[r2*8+c2]=='-')out.push([r2*8+c2,r1*8+c1])}}return out}
+ const CAP=(bd,m)=>[...bd].map((_,i)=>i).filter(i=>bd[i]!='-'&&lo(bd[i])==m&&mv(bd,i,m,1).length);
+ const start=()=>{let s='';for(let i=0;i<64;i++){const r=i/8|0,c=i%8;s+=(r+c)%2?(r<3?'b':r>4?'w':'-'):'-'}return s};
+ function lobby(){stop();sel=-1;el.innerHTML=`<div class="card"><h3>⚫ Шашки онлайн</h3><input id="bt" type="number" value="100" min="100" placeholder="Ставка"><button id="cr" style="width:100%;margin-top:6px">Создать комнату</button><p class="err">${msg}</p></div><div class="card"><h4>Открытые комнаты</h4><div id="ls" class="m">…</div></div>`;
+  $('#cr').onclick=async()=>{const bet=+$('#bt').value|0;if(bet<100||bet>U.bal){msg='Ставка от 100 и не больше баланса';return lobby()}msg='';const c=String(Math.random()*9000+1000|0);await addBal(-bet);await db.doc('rk/'+c).set({w:me,b:'',bet,bd:start(),turn:'w',lock:-1,win:'',pw:false,pb:false,ts:Date.now()});room(c)};
+  u1=db.collection('rk').onSnapshot(s=>{const L=s.docs.filter(d=>{const x=d.data();return !x.b&&x.w!==me&&!x.win&&Date.now()-x.ts<36e5});
+   const ls=$('#ls');if(!ls)return;ls.innerHTML=L.map(d=>{const x=d.data();return`<p>${x.w} · ставка ${x.bet} <button data-j="${d.id}">Играть</button></p>`}).join('')||'Нет, создай свою и позови друга';
+   el.querySelectorAll('[data-j]').forEach(b=>b.onclick=async()=>{const r=(await db.doc('rk/'+b.dataset.j).get()).data();if(!r||r.b||U.bal<r.bet){msg='Недоступно';return lobby()}
+    await addBal(-r.bet);await db.doc('rk/'+b.dataset.j).update({b:me});room(b.dataset.j)})})}
+ function room(c){stop();paid=false;u2=db.doc('rk/'+c).onSnapshot(s=>{if(!s.exists)return lobby();const r=s.data();draw(c,r,r.w==me?'w':'b')})}
+ function draw(c,r,m){const myT=r.turn==m&&r.b&&!r.win,bd=r.bd,caps=CAP(bd,m),tg={};
+  if(myT&&sel>=0){const L=r.lock>=0&&sel!=r.lock?[]:(caps.length?(caps.includes(sel)?mv(bd,sel,m,1):[]):mv(bd,sel,m,0));L.forEach(x=>tg[x[0]]=x[1])}
+  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк ${r.bet*2} 💰</span></div><p>${r.w} ⚪ vs ${r.b||'ждём соперника…'} ⚫ · ты ${m=='w'?'белые':'чёрные'}</p><div class="ck">${[...Array(64).keys()].map(pos=>{const i=m=='b'?63-pos:pos,ch=bd[i],R=i/8|0,C=i%8;return`<div data-c="${i}" class="${(R+C)%2?'dk':'lt'}${sel==i?' sl':''}${i in tg?' tg':''}">${ch=='-'?'':`<span class="pc ${lo(ch)}">${ch==ch.toUpperCase()?'♛':''}</span>`}</div>`}).join('')}</div><p style="text-align:center"><b>${r.win?(r.win==m?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл'):!r.b?'':myT?'Твой ход'+(r.lock>=0?' (бей дальше)':''):'Ход соперника'}</b></p><button class="s" id="lv">${!r.b?'Отменить':'Выйти'}</button></div>`;
+  $('#lv').onclick=async()=>{if(!r.b&&!r.win){await addBal(r.bet);await db.doc('rk/'+c).delete()}lobby()};
+  el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const i=+d.dataset.c;if(!myT)return;
+   if(bd[i]!='-'&&lo(bd[i])==m&&(r.lock<0||r.lock==i)){sel=i;return draw(c,r,m)}
+   if(sel>=0&&i in tg){const b=[...bd],cp=tg[i],pc=b[sel];b[i]=pc;b[sel]='-';if(cp>=0)b[cp]='-';let up=false;const R=i/8|0;
+    if(((m=='w'&&R==0)||(m=='b'&&R==7))&&pc==lo(pc)){b[i]=pc.toUpperCase();up=true}
+    const bs=b.join(''),more=cp>=0&&!up&&mv(bs,i,m,1).length>0,o=m=='w'?'b':'w';
+    const alive=[...bs].some((x,j)=>x!='-'&&lo(x)==o&&mv(bs,j,o,0).length);
+    sel=-1;db.doc('rk/'+c).update({bd:bs,turn:more?m:o,lock:more?i:-1,win:(alive||more)?'':m})}});
+  if(r.win==m&&!paid&&!r['p'+m]){paid=true;addBal(r.bet*2);db.doc('rk/'+c).update({['p'+m]:true})}}
+ lobby()}
+function quiz(el){const isA=me===ADM;let cur=null,raw=[];
+ el.innerHTML='<div id="qf"></div><div id="qd"></div>';
+ if(isA){$('#qf').innerHTML=`<div class="card"><h3>❓ Новый вопрос</h3><input id="qq" placeholder="Вопрос"><input id="q0" placeholder="Вариант 1"><input id="q1" placeholder="Вариант 2"><input id="q2" placeholder="Вариант 3"><input id="q3" placeholder="Вариант 4"><input id="qc" type="number" min="1" max="4" placeholder="Номер верного (1-4)"><button id="qp" style="width:100%;margin-top:6px">Опубликовать</button></div>`;
+  $('#qp').onclick=()=>{const q=$('#qq').value.trim(),o=[0,1,2,3].map(i=>$('#q'+i).value.trim()).filter(Boolean),c=(+$('#qc').value|0)-1;if(!q||o.length<2||c<0||c>=o.length)return;
+   db.doc('quiz/cur').set({id:Date.now(),q,o,c,rev:false});['qq','q0','q1','q2','q3','qc'].forEach(i=>$('#'+i).value='')}}
+ const u1=db.doc('quiz/cur').onSnapshot(s=>{cur=s.exists?s.data():null;draw()});
+ const u2=db.collection('qans').onSnapshot(s=>{raw=s.docs.map(d=>d.data());draw()});
+ stop=()=>{u1();u2()};
+ function draw(){const d=$('#qd');if(!d)return;const ans={};raw.forEach(x=>{if(cur&&x.q==cur.id)ans[x.u]=x.a});
+  if(!cur){d.innerHTML='<div class="card m">Вопроса пока нет. Ждите админа.</div>';return}
+  const my=ans[me];let h=`<div class="card"><h3>${esc(cur.q)}</h3>${cur.o.map((o,i)=>`<button class="${cur.rev?(i==cur.c?'g':'s'):my===i?'':'s'}" data-a="${i}" style="width:100%;margin:4px 0;text-align:left">${i+1}. ${esc(o)}${my===i?' ✔':''}</button>`).join('')}<p class="m">Ответили: ${Object.keys(ans).length}</p>`;
+  if(cur.rev&&my!==undefined)h+=`<p><b class="${my==cur.c?'':'err'}">${my==cur.c?'✅ Верно!':'❌ Неверно'}</b></p>`;
+  if(isA)h+=`<button id="qr" class="g" style="width:100%">${cur.rev?'Ответы показаны':'Показать правильный ответ всем'}</button>`;
+  h+='</div>';
+  if(isA&&cur.rev)h+=`<div class="card"><h4>Результаты и награды</h4>${Object.keys(ans).map(u=>`<div class="row" style="margin:6px 0"><span>${u} ${ans[u]==cur.c?'✅':'❌'}</span><input data-s="${u}" type="number" placeholder="Сумма"><button data-p2="${u}" class="g" style="flex:0 0 auto">Дать</button></div>`).join('')||'<p class="m">Никто не ответил</p>'}</div>`;
+  d.innerHTML=h;
+  d.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{if(isA||cur.rev||my!==undefined)return;db.doc('qans/'+cur.id+'_'+me).set({q:cur.id,u:me,a:+b.dataset.a})});
+  const qr=$('#qr');if(qr)qr.onclick=()=>db.doc('quiz/cur').update({rev:true});
+  d.querySelectorAll('[data-p2]').forEach(b=>b.onclick=async()=>{const u=b.dataset.p2,a=+d.querySelector('[data-s="'+u+'"]').value|0;if(a>0&&a<=U.bal){await ud(u).update({bal:firebase.firestore.FieldValue.increment(a)});await ud(me).update({bal:U.bal-a});b.textContent='✓'}})}}
+function durak(el){let u1,u2,msg='',paid=false,selT=-1,R=9;stop=()=>{u1&&u1();u2&&u2()};
+ const N13=['2','3','4','5','6','7','8','9','10','В','Д','К','Т'],SU=['♠','♥','♦','♣'],rk=c=>c%R,su=c=>c/R|0,nm=c=>N13[rk(c)+(R==9?4:0)]+SU[su(c)];
+ const card=(c,x)=>{const rank=N13[rk(c)+(R==9?4:0)],suit=SU[su(c)],red=su(c)==1||su(c)==2,face=['В','Д','К','Т'].includes(rank);const art={В:'🛡️',Д:'👑',К:'♛',Т:'⭐'}[rank]||'';return`<button class="cd ${red?'rd':''} ${face?'face':''} ${x&&x.includes('data-h')&&selT===c?'selcard':''}" ${x||''}><span>${rank}</span><span class="suit">${suit}</span>${face?`<span>${art}</span>`:`<span>${suit}</span>`}</button>`};
+ const cl=o=>JSON.parse(JSON.stringify(o));
+ const nxt=(r,i)=>{for(let k=1;k<=r.p.length;k++){const j=(i+k)%r.p.length;if(!r.out.includes(r.p[j]))return j}return i};
+ function refill(r,h,dk){const n=r.p.length,o=[];for(let k=0;k<n;k++){const j=(r.at+k)%n;if(j!=r.df)o.push(r.p[j])}o.push(r.p[r.df]);o.forEach(x=>{while(h[x].length<6&&dk.length)h[x].push(dk.shift())})}
+ function settle(c,r,h,dk,at){const out=[...r.out];r.p.forEach(n=>{if(!out.includes(n)&&!h[n].length&&!dk.length)out.push(n)});const o2={...r,out},alive=r.p.filter(n=>!out.includes(n)),u={hands:h,deck:dk,table:[],out};
+  if(alive.length<2){u.st='end';u.loser=alive[0]||''}else{if(out.includes(r.p[at]))at=nxt(o2,at);u.at=at;u.df=nxt(o2,at)}
+  db.doc('rd/'+c).update(u)}
+ const bito=(c,r)=>{const h=cl(r.hands),dk=[...r.deck];refill(r,h,dk);settle(c,r,h,dk,r.df)};
+ const take=(c,r)=>{db.doc('rd/'+c).update({taking:true})};
+  const confirmTake=(c,r)=>{const h=cl(r.hands),dk=[...r.deck],d=r.p[r.df];(r.table||[]).forEach(x=>{h[d].push(x.a);if(x.d>=0)h[d].push(x.d)});refill(r,h,dk);settle(c,r,h,dk,nxt(r,r.df));db.doc('rd/'+c).update({taking:false})};
+ function play(c,r,k){if(r.st!='play'||r.out.includes(me))return;const t=cl(r.table||[]),h=cl(r.hands),def=r.p[r.df];if(!h[me].includes(k))return;
+  if(me==def){const i=selT>=0&&t[selT]&&t[selT].d<0?selT:t.findIndex(x=>x.d<0);if(i<0)return;const a=t[i].a;
+   if(!((su(k)==su(a)&&rk(k)>rk(a))||(su(k)==r.trump&&su(a)!=r.trump)))return;t[i].d=k}
+  else{const rs=t.flatMap(x=>x.d>=0?[rk(x.a),rk(x.d)]:[rk(x.a)]),und=t.filter(x=>x.d<0).length;
+   if(t.length?!rs.includes(rk(k)):me!=r.p[r.at])return;if(t.length>=6||t.filter(x=>x.d<0).length>=h[def].length)return;t.push({a:k,d:-1})}
+  h[me].splice(h[me].indexOf(k),1);selT=-1;db.doc('rd/'+c).update({hands:h,table:t})}
+ function lobby(){stop();el.innerHTML=`<div class="card"><h3>🃏 Дурак онлайн (2–8)</h3><input id="bt" type="number" value="100" min="100" placeholder="Ставка"><button id="cr" style="width:100%;margin-top:6px">Создать стол</button><p class="err">${msg}</p></div><div class="card"><h4>Открытые столы</h4><div id="ls" class="m">…</div></div>`;
+  $('#cr').onclick=async()=>{const bet=+$('#bt').value|0;if(bet<100||bet>U.bal){msg='Ставка от 100 и не больше баланса';return lobby()}msg='';const c=String(Math.random()*9000+1000|0);await addBal(-bet);await db.doc('rd/'+c).set({host:me,bet,st:'wait',p:[me],ts:Date.now()});room(c)};
+  u1=db.collection('rd').onSnapshot(s=>{const L=s.docs.filter(d=>{const x=d.data();return x.st=='wait'&&!x.p.includes(me)&&x.p.length<8&&Date.now()-x.ts<36e5}),ls=$('#ls');if(!ls)return;
+   ls.innerHTML=L.map(d=>{const x=d.data();return`<p>${x.host} · ставка ${x.bet} · ${x.p.length}/8 <button data-j="${d.id}">Сесть</button></p>`}).join('')||'Нет, создай свой стол';
+   el.querySelectorAll('[data-j]').forEach(b=>b.onclick=async()=>{const r=(await db.doc('rd/'+b.dataset.j).get()).data();if(!r||r.st!='wait'||r.p.length>=8||U.bal<r.bet){msg='Недоступно';return lobby()}
+    await addBal(-r.bet);await db.doc('rd/'+b.dataset.j).update({p:[...r.p,me]});room(b.dataset.j)})})}
+ function room(c){stop();paid=false;selT=-1;u2=db.doc('rd/'+c).onSnapshot(s=>{if(!s.exists)return lobby();draw(c,s.data())})}
+ function draw(c,r){R=r.R||9;
+  if(r.st=='wait'){el.innerHTML=`<div class="card"><div class="top"><b>Стол ${c}</b><span>Ставка ${r.bet}</span></div><p>Игроки (${r.p.length}/8): ${r.p.join(', ')}</p>${r.host==me?`<button id="go" style="width:100%" ${r.p.length<2?'disabled':''}>Начать игру</button>`:'<p class="m">Ждём, пока хост начнёт…</p>'}<button class="s" id="lv" style="margin-top:8px;width:100%">Выйти</button></div>`;
+   const go=$('#go');if(go)go.onclick=()=>{const n=r.p.length,RR=n>6?13:9,d=[...Array(4*RR).keys()].sort(()=>Math.random()-.5),h={};r.p.forEach(x=>{h[x]=d.splice(0,6)});
+    db.doc('rd/'+c).update({st:'play',R:RR,hands:h,deck:d,trump:Math.floor(d[d.length-1]/RR),table:[],at:0,df:1,out:[],loser:''})};
+   $('#lv').onclick=async()=>{if(r.host!=me&&r.p.includes(me)){await addBal(r.bet);await db.doc('rd/'+c).update({p:r.p.filter(x=>x!=me)})}else if(r.host==me&&r.p.length==1){await addBal(r.bet);await db.doc('rd/'+c).delete()}lobby()};return}
+  const t=r.table||[],att=r.p[r.at],def=r.p[r.df],hand=[...(r.hands[me]||[])].sort((a,b)=>a-b),isDef=me==def,und=t.filter(x=>x.d<0).length,alive=!r.out.includes(me),n=r.p.length;
+  let st=r.st=='end'?(r.loser?`🃏 Дурак: <b>${r.loser}</b>`+(r.loser==me?'. Ты проиграл ставку':'. Ты выиграл +'+Math.floor(r.bet/(n-1))):'Ничья, ставки возвращены'):!alive?'Ты вышел из игры 🎉 ждёшь итогов':isDef?(und?'Ты отбиваешься: тапни карту (или «Беру»)':'Все отбито, ждём «Бито»'):me==att&&!t.length?'Твой ход: атакуй любой картой':und?'Защитник отбивается, можно подкинуть':t.length?'Подкидывай той же масти значения или жми «Бито»':'Ждём атаку';
+  el.innerHTML=`<div class="card"><div class="top"><b>Стол ${c} · банк ${r.bet*n}</b><span>Козырь ${SU[r.trump]} · колода ${r.deck.length}</span></div>
+  <div class="row" style="gap:6px">${r.p.map(x=>`<div style="flex:none;background:#ffffff14;border-radius:10px;padding:4px 8px;font-size:13px;${x==me?'outline:1px solid var(--a)':''}">${r.st=='play'&&x==att?'⚔️':r.st=='play'&&x==def?'🛡️':''}${x} · ${r.out.includes(x)?'вышел':(r.hands[x]||[]).length}</div>`).join('')}</div>
+  <div class="tbl">${t.map((x,i)=>`<div class="pr ${selT==i?'sel2':''}" data-t="${i}">${card(x.a)}${x.d>=0?card(x.d):''}</div>`).join('')||'<span class="m">Стол пуст</span>'}</div>
+  <p style="text-align:center"><b>${st}</b></p>
+  ${r.st=='play'&&alive?`<div class="row">${isDef&&und?'<button id="tk" class="r">Беру</button>':''}${!isDef&&t.length&&!und?'<button id="bt2" class="g">Бито</button>':''}</div><div class="hand">${hand.map(k=>card(k,`data-h="${k}"`)).join('')}</div>`:''}
+  <button class="s" id="lv" style="margin-top:10px;width:100%">Выйти</button></div>`;
+  el.querySelectorAll('[data-t]').forEach(d=>d.onclick=()=>{selT=+d.dataset.t;draw(c,r)});
+  el.querySelectorAll('[data-h]').forEach(d=>d.onclick=()=>play(c,r,+d.dataset.h));
+  const tk=$('#tk'),b2=$('#bt2');if(tk)tk.onclick=()=>take(c,r);if(b2)b2.onclick=()=>bito(c,r);
+  $('#lv').onclick=()=>lobby();
+  if(r.st=='end'&&!paid&&!r['pd_'+me]&&r.p.includes(me)){paid=true;const a=!r.loser?r.bet:r.loser==me?0:r.bet+Math.floor(r.bet/(n-1));if(a)addBal(a);db.doc('rd/'+c).update({['pd_'+me]:true})}}
+ lobby()}
+function g2048(el){let b=Array(16).fill(0),sc=0;
+ const add=()=>{const e=b.map((v,i)=>v?-1:i).filter(i=>i>=0);if(e.length)b[e[Math.random()*e.length|0]]=Math.random()<.9?2:4};add();add();
+ function mv(d){let mo=false;for(let i=0;i<4;i++){const ix=j=>d<2?i*4+j:j*4+i;let l=[0,1,2,3].map(j=>b[ix(j)]);if(d%2)l.reverse();let n=l.filter(x=>x);
+  for(let k=0;k<n.length-1;k++)if(n[k]==n[k+1]){n[k]*=2;sc+=n[k];n.splice(k+1,1)}while(n.length<4)n.push(0);if(d%2)n.reverse();
+  for(let j=0;j<4;j++)if(b[ix(j)]!=n[j]){mo=true;b[ix(j)]=n[j]}}if(mo)add();rec('2048',sc);draw()}
+ function draw(){el.innerHTML=`<div class="card"><div class="top"><b>2048</b><span>Очки: ${sc} · рекорд ${(U.rec||{})['2048']||0}</span></div><div class="b4" id="bd">${b.map(v=>`<div class="t" style="${v?`background:hsl(${260-Math.log2(v)*22},80%,58%);color:#fff`:''}">${v||''}</div>`).join('')}</div>
+ <div class="row" style="margin-top:8px"><button class="s" data-d="2">⬆</button><button class="s" data-d="3">⬇</button><button class="s" data-d="0">⬅</button><button class="s" data-d="1">➡</button></div>
+ <button class="g" id="cl" style="margin-top:8px;width:100%">Начать заново</button></div>`;
+ el.querySelectorAll('[data-d]').forEach(x=>x.onclick=()=>mv(+x.dataset.d));
+ $('#cl').onclick=()=>{b=Array(16).fill(0);sc=0;add();add();draw()};
+ let sx,sy;const bd=$('#bd');bd.ontouchstart=e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY};
+ bd.ontouchend=e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<20)return;mv(Math.abs(dx)>Math.abs(dy)?(dx>0?1:0):(dy>0?3:2))}}
+ const k=e=>{const m={ArrowLeft:0,ArrowRight:1,ArrowUp:2,ArrowDown:3}[e.key];if(m!=null){e.preventDefault();mv(m)}};
+ document.addEventListener('keydown',k);stop=()=>document.removeEventListener('keydown',k);draw()}
+function snake(el){const N=15;let s=[[7,7]],d=[1,0],f=[3,3],sc=0,run=false,iv;
+ el.innerHTML=`<div class="card"><div class="top"><b>Змейка</b><span id="sc">0</span></div><canvas id="c" width="300" height="300"></canvas>
+ <div class="dp"><span></span><button class="s" data-v="0,-1">⬆</button><span></span><button class="s" data-v="-1,0">⬅</button><button class="s" data-v="0,1">⬇</button><button class="s" data-v="1,0">➡</button></div>
+ <button id="go" style="margin-top:8px;width:100%">Старт</button></div>`;
+ const cx=$('#c').getContext('2d');let sx,sy;const cv=$('#c');cv.ontouchstart=e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY};cv.ontouchend=e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))>20)set(Math.abs(dx)>Math.abs(dy)?[dx>0?1:-1,0]:[0,dy>0?1:-1])};
+ const set=v=>{if(v[0]!==-d[0]||v[1]!==-d[1])d=v};
+ el.querySelectorAll('[data-v]').forEach(x=>x.onclick=()=>set(x.dataset.v.split(',').map(Number)));
+ const k=e=>{const m={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(m){e.preventDefault();set(m)}};
+ document.addEventListener('keydown',k);
+ const draw=()=>{cx.clearRect(0,0,300,300);cx.fillStyle='#e5484d';cx.fillRect(f[0]*20,f[1]*20,18,18);cx.fillStyle='#1fb26b';s.forEach(p=>cx.fillRect(p[0]*20,p[1]*20,18,18))};
+ function tick(){const h=[s[0][0]+d[0],s[0][1]+d[1]];
+  if(h[0]<0||h[1]<0||h[0]>=N||h[1]>=N||s.some(p=>p[0]==h[0]&&p[1]==h[1])){clearInterval(iv);run=false;rec('Змейка',sc);$('#go').textContent='Игра окончена: '+sc+'. Ещё раз';s=[[7,7]];d=[1,0];sc=0;return}
+  s.unshift(h);if(h[0]==f[0]&&h[1]==f[1]){sc++;$('#sc').textContent=sc;f=[Math.random()*N|0,Math.random()*N|0]}else s.pop();draw()}
+ $('#go').onclick=()=>{if(run)return;run=true;sc=0;$('#sc').textContent=0;iv=setInterval(tick,230)};
+ stop=()=>{clearInterval(iv);document.removeEventListener('keydown',k)};draw()}
+function clicker(el){let n=0,t=0,run=false,iv;
+ el.innerHTML=`<div class="card" style="text-align:center"><h3>👆 Кликер: 10 секунд</h3><div id="cn" style="font-size:60px;font-weight:800">0</div><div class="m" id="cx2">Нажми кнопку, чтобы начать</div><div class="m">Рекорд: <b>${(U.rec||{})['Кликер']||0}</b></div><button id="ck" style="font-size:56px;padding:34px 60px;margin-top:14px;touch-action:manipulation">👆</button></div>`;
+ const cn=$('#cn'),ci=$('#cx2');
+ $('#ck').onpointerdown=()=>{if(!run){n=0;run=true;t=10;iv=setInterval(()=>{t-=.1;if(t<=0){clearInterval(iv);run=false;ci.textContent='Время вышло: '+n+' кликов! Жми, чтобы заново';rec('Кликер',n);return}ci.textContent='Осталось '+t.toFixed(1)+' с'},100)}n++;cn.textContent=n};
+ stop=()=>clearInterval(iv)}
+function ttt(el){const W=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];let u1,u2,msg='';
+ stop=()=>{u1&&u1();u2&&u2()};
+ function lobby(){stop();el.innerHTML=`<div class="card"><h3>❌⭕ Онлайн</h3><input id="bt" type="number" value="100" min="100" placeholder="Ставка"><button id="cr" style="width:100%">Создать комнату</button><p class="err">${msg}</p></div><div class="card"><h4>Открытые комнаты</h4><div id="ls" class="m">…</div></div>`;
+  $('#cr').onclick=async()=>{const bet=+$('#bt').value|0;if(bet<100||bet>U.bal){msg='Ставка от 100 и не больше баланса';return lobby()}msg='';const c=String(Math.random()*9000+1000|0);
+   await addBal(-bet);await db.doc('rooms/'+c).set({x:me,o:'',bet,board:'---------',turn:'x',win:'',px:false,po:false,ts:Date.now()});room(c)};
+  u1=db.collection('rooms').onSnapshot(s=>{const L=s.docs.filter(d=>{const x=d.data();return !x.o&&x.x!==me&&!x.win&&Date.now()-x.ts<36e5});
+   $('#ls').innerHTML=L.map(d=>{const x=d.data();return`<p>${x.x} · ставка ${x.bet} <button data-j="${d.id}">Играть</button></p>`}).join('')||'Нет, создай свою и позови друга';
+   el.querySelectorAll('[data-j]').forEach(b=>b.onclick=async()=>{const r=(await db.doc('rooms/'+b.dataset.j).get()).data();if(!r||r.o||U.bal<r.bet){msg='Недоступно';return lobby()}
+    await addBal(-r.bet);await db.doc('rooms/'+b.dataset.j).update({o:me});room(b.dataset.j)})})}
+ function room(c){stop();let paid=false;u2=db.doc('rooms/'+c).onSnapshot(s=>{if(!s.exists)return lobby();const r=s.data(),mk=r.x==me?'x':'o';
+  const myT=r.turn==mk&&r.o&&!r.win;
+  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк: ${r.bet*2} 💰</span></div><p>${r.x} ❌ vs ${r.o||'ждём соперника…'} ⭕</p>
+  <div class="b3">${[...r.board].map((v,i)=>`<div data-c="${i}">${v=='-'?'':v=='x'?'❌':'⭕'}</div>`).join('')}</div>
+  <p style="text-align:center"><b>${r.win?(r.win=='d'?'Ничья, ставки возвращены':(r.win==mk?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл')):!r.o?'':myT?'Твой ход':'Ход соперника'}</b></p>
+  <div class="row"><button class="s" id="lv">${!r.o?'Отменить':'Выйти'}</button></div></div>`;
+  $('#lv').onclick=async()=>{if(!r.o&&!r.win){await addBal(r.bet);await db.doc('rooms/'+c).delete()}lobby()};
+  el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const i=+d.dataset.c;if(!myT||r.board[i]!='-')return;
+   const bd=[...r.board];bd[i]=mk;const w=W.some(l=>l.every(k=>bd[k]==mk))?mk:bd.includes('-')?'':'d';
+   db.doc('rooms/'+c).update({board:bd.join(''),turn:mk=='x'?'o':'x',win:w})});
+  if(r.win&&!paid&&!r['p'+mk]&&(r.win=='d'||r.win==mk)){paid=true;const n=r.win=='d'?r.bet:r.bet*2;addBal(n);db.doc('rooms/'+c).update({['p'+mk]:true})}})}
+ lobby()}
+init();
+</script></body></html>
