@@ -82,8 +82,8 @@ const ud=l=>db.doc('users/'+l);
 const addBal=(n,w)=>{log(me,n,w||(n>0?'Выигрыш или возврат':'Ставка'));return ud(me).update({bal:U.bal+n})};
 const LS={g:()=>{try{return JSON.parse(localStorage.getItem('gc')||'null')}catch(e){return null}},s:v=>{try{localStorage.setItem('gc',JSON.stringify(v))}catch(e){}}};
 function cleanup(){if(stop){stop();stop=null}}
-var MS=[],MG=['2048','Змейка','Блок Бласт','Кликер','Память','Угадай число','Крестики-нолики','Шашки','Дурак','Домино','Шутер','Бегун','Гонка'],OFF=0,SND=(()=>{try{return localStorage.getItem('snd')!=='0'}catch(e){return true}})(),AC,T=null,DL=[],AV={};
-const NOW=()=>Date.now()+OFF,GN=['2048','Змейка','Блок Бласт','Кликер','Память','Угадай число','Бегун','Гонка'],AVS=['😀','😎','🤩','🦊','🐼','🐯','🦄','🐲','👾','🤖','🔥','⚡'];
+var MS=[],MG=['2048','Змейка','Блок Бласт','Кликер','Память','Угадай число','Крестики-нолики','Шашки','Дурак','Домино','Шутер','Бегун','Камень-ножницы-бумага','Судоку','Слова','Пинг-понг','Арканоид','Flappy','Сапёр','Тетрис'],OFF=0,SND=(()=>{try{return localStorage.getItem('snd')!=='0'}catch(e){return true}})(),AC,T=null,DL=[],AV={};
+const NOW=()=>Date.now()+OFF,GN=['2048','Змейка','Блок Бласт','Кликер','Память','Угадай число','Бегун','Судоку','Слова','Пинг-понг','Арканоид','Flappy','Сапёр','Тетрис'],AVS=['😀','😎','🤩','🦊','🐼','🐯','🦄','🐲','👾','🤖','🔥','⚡'];
 function snd(t){if(!SND)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),f={tap:[520,.05],coin:[700,.2],win:[600,.4],lose:[200,.3]}[t]||[440,.05],n=AC.currentTime;o.type=t=='lose'?'sawtooth':'sine';o.frequency.setValueAtTime(f[0],n);if(t=='coin'||t=='win')o.frequency.exponentialRampToValueAtTime(f[0]*1.8,n+f[1]*.7);g.gain.setValueAtTime(.07,n);g.gain.exponentialRampToValueAtTime(.0001,n+f[1]);o.connect(g);g.connect(AC.destination);o.start();o.stop(n+f[1])}catch(e){}}
 function fx(){snd('win');for(let i=0;i<36;i++){const d=document.createElement('i');d.className='cf';d.style.cssText=`left:${Math.random()*100}vw;background:hsl(${Math.random()*360},90%,60%);animation-delay:${Math.random()*.4}s`;document.body.appendChild(d);setTimeout(()=>d.remove(),2400)}}
 document.addEventListener('click',e=>{if(e.target.closest('button,.gc,.pk,[data-c],[data-n]'))snd('tap')});
@@ -123,7 +123,7 @@ const NAV=[['games','🎮','Игры'],['missions','🎯','Миссии'],['top'
 function shell(inner){const nv=(me===ADM?NAV.filter(n=>n[0]!='profile'):NAV).concat(me===ADM?[['admin','🛠','Админ']]:[]);
  A.innerHTML=`<header><div class="av">${U.av||me[0].toUpperCase()}</div><div><b>${me}</b><div class="m">Игровой клуб</div></div><button class="s" id="sn" style="padding:8px 11px">${SND?'🔊':'🔇'}</button><div class="bal">💰 ${U.bal}</div></header><main id="v">${inner}</main><nav>${nv.map(n=>`<button data-t="${n[0]}" class="${tab==n[0]||(tab=='play'&&n[0]=='games')?'on':''}"><i>${n[1]}</i>${n[2]}${n[0]=='admin'?`<em id="pb" class="bdg">${pend||''}</em>`:''}</button>`).join('')}</nav>`;
  A.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{cleanup();tab=b.dataset.t;render()});$('#sn').onclick=()=>{SND=!SND;try{localStorage.setItem('snd',SND?'1':'0')}catch(e){}$('#sn').textContent=SND?'🔊':'🔇';snd('tap')}}
-const GAMES=[['Крестики-нолики','❌','Онлайн · ставки','#ff6cc3','#7c6cff',ttt],['Шашки','⚫','Онлайн · ставки','#ffb86c','#ff5d73',checkers],['Дурак','🃏','Онлайн · 2–8 игроков','#f7971e','#ffd200',durak],['Домино','🎲','Онлайн · ставки','#43cea2','#185a9d',domino],['Шутер 1×1','🔫','Онлайн · ставки','#ff512f','#dd2476',shooter],['Неон-бегун','🏃','Монеты идут на баланс','#00c6ff','#0072ff',runner],['Гонка','🏎','Монеты идут на баланс','#f7971e','#f9d423',racer],['2048','🔢','Одиночная','#2ee59d','#0fa3b1',g2048],['Змейка','🐍','Одиночная','#7cf29a','#1fb26b',snake],['Блок Бласт','🧱','Одиночная','#6cc4ff','#7c6cff',blast],['Кликер','👆','10 секунд','#ffd166','#ff8a5c',clicker],['Память','🧠','Одиночная','#f093fb','#f5576c',memory],['Угадай число','🎯','Одиночная','#4facfe','#00f2fe',guess],['Викторина','❓','Для всех','#c471f5','#fa71cd',quiz]];
+const GAMES=[['Крестики-нолики','❌','Онлайн · ставки','#ff6cc3','#7c6cff',ttt],['Шашки','⚫','Онлайн · ставки','#ffb86c','#ff5d73',checkers],['Дурак','🃏','Онлайн · 2–8 игроков','#f7971e','#ffd200',durak],['Домино','🎲','Онлайн · ставки','#43cea2','#185a9d',domino],['Камень-ножницы-бумага','✊','Онлайн · ставки','#6cc4ff','#7c6cff',rps],['Шутер 1×1','🔫','Онлайн · ставки','#ff512f','#dd2476',shooter],['Неон-бегун','🏃','Монеты идут на баланс','#00c6ff','#0072ff',runner],['Тетрис','🟦','Одиночная','#4facfe','#7c6cff',tetris],['Сапёр','💣','Одиночная','#ff8a5c','#ff5d73',sapper],['Flappy','🐦','Одиночная','#00c6ff','#2ee59d',flappy],['Арканоид','🧱','Одиночная','#ff5d73','#ffd166',arkan],['Пинг-понг','🏓','Одиночная','#43cea2','#185a9d',pong],['Слова','🔤','Одиночная','#c471f5','#fa71cd',words],['Судоку','🔢','Одиночная','#7cf29a','#0fa3b1',sudoku],['2048','🔢','Одиночная','#2ee59d','#0fa3b1',g2048],['Змейка','🐍','Одиночная','#7cf29a','#1fb26b',snake],['Блок Бласт','🧱','Одиночная','#6cc4ff','#7c6cff',blast],['Кликер','👆','10 секунд','#ffd166','#ff8a5c',clicker],['Память','🧠','Одиночная','#f093fb','#f5576c',memory],['Угадай число','🎯','Одиночная','#4facfe','#00f2fe',guess],['Викторина','❓','Для всех','#c471f5','#fa71cd',quiz]];
 function render(){if(!U)return;cleanup();
  if(tab=='missions')return missionsPage();if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return leaders();if(tab=='chat')return chat(window.cp);if(tab=='play')return;
  shell(`<div id="ann"></div>${daily()}<h3 class="sec">🌐 Играй с друзьями</h3><div class="rail">${GAMES.map((g,i)=>g[2].startsWith('Онлайн')?`<div class="rc" data-i="${i}" style="background:linear-gradient(160deg,${g[3]},${g[4]})"><span class="em">${g[1]}</span><b>${g[0]}</b><small>${g[2].replace('Онлайн · ','')}</small></div>`:'').join('')}</div><h3 class="sec">🎯 Одиночные и для всех</h3>${GAMES.map((g,i)=>g[2].startsWith('Онлайн')?'':`<div class="gr" data-i="${i}"><div class="ic" style="background:linear-gradient(135deg,${g[3]},${g[4]})">${g[1]}</div><div><b>${g[0]}</b><div class="m">${g[2]}</div></div><span>›</span></div>`).join('')}`);
@@ -353,7 +353,6 @@ function laneGame(el,C){const W=320,H=480,N=C.N,X=i=>W/N*(i+.5);let ln=1,px=X(1)
  $('#go').onclick=()=>{if(run)return;ln=1;px=X(1);z=0;ob=[];cn=[];d=0;cc=0;sp=C.sp;tm=0;run=true;last=0;$('#go').style.display='none';raf=requestAnimationFrame(tick)};
  stop=()=>{cancelAnimationFrame(raf);document.removeEventListener('keydown',k)};draw()}
 function runner(el){return laneGame(el,{N:3,n:'Бегун',t:'🏃 Неон-бегун',jump:1,sp:240,acc:5,bg:['#14073a','#2a0f5c'],lc:'#7c6cff99'})}
-function racer(el){return laneGame(el,{N:4,n:'Гонка',t:'🏎 Гонка',jump:0,sp:300,acc:6,bg:['#1b1f2e','#0d101c'],lc:'#ffffff66'})}
 function shooter(el){let u1,u2,msg='',paid=false,raf,iv,gm=false,R={},m='a',o='b',P={x:40,y:160},O={x:280,y:160},B=[],ky={l:0,r:0,u:0,d:0,f:0},last=0,lf=0,lh=0,lastKo=0,fl=0;
  const SP=()=>m=='a'?{x:40,y:160}:{x:280,y:160},cl=v=>Math.max(12,Math.min(308,v));
  stop=()=>{u1&&u1();u2&&u2();cancelAnimationFrame(raf);clearInterval(iv);gm=false};
@@ -445,5 +444,103 @@ function ttt(el){const W=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8
    db.doc('rooms/'+c).update({board:bd.join(''),turn:mk=='x'?'o':'x',win:w})});
   if(r.win&&!paid&&!r['p'+mk]&&(r.win=='d'||r.win==mk)){paid=true;const n=r.win=='d'?r.bet:r.bet*2;addBal(n);if(r.win==mk){fx();mission('Крестики-нолики',1)}db.doc('rooms/'+c).update({['p'+mk]:true})}})}
  lobby()}
+/* ===== новые игры ===== */
+let IV;
+function cvs(el,t,W,H,ex){el.innerHTML=`<div class="card"><div class="top"><b>${t}</b><span id="sc">0</span></div><canvas id="c" width="${W}" height="${H}" style="touch-action:none;max-width:100%;display:block;margin:auto;background:#0d101c;border-radius:12px"></canvas>${ex||''}<button id="go" style="margin-top:8px;width:100%">Старт</button></div>`;stop=()=>{clearInterval(IV);document.onkeydown=null};return $('#c').getContext('2d')}
+function lp(f,ms){clearInterval(IV);IV=setInterval(f,ms)}
+function go(f){$('#go').onclick=()=>{$('#go').style.display='none';f()}}
+function fin(g,s){clearInterval(IV);snd('lose');rec(g,s);const b=$('#go');if(b){b.style.display='';b.textContent='Счёт '+s+' · Ещё раз'}}
+function setsc(s){const e=$('#sc');if(e)e.textContent=s}
+function flappy(el){const x=cvs(el,'🐦 Flappy',300,400);let y,v,P,sc;
+ const fl=()=>{v=-6};$('#c').onpointerdown=fl;document.onkeydown=e=>{if(e.key==' '){e.preventDefault();fl()}};
+ const dr=()=>{x.fillStyle='#4facfe';x.fillRect(0,0,300,400);x.fillStyle='#2ee59d';P.forEach(p=>{x.fillRect(p.x,0,40,p.g);x.fillRect(p.x,p.g+110,40,400)});x.font='24px serif';x.fillText('🐦',50,y+10)};
+ const tk=()=>{v+=.45;y+=v;P.forEach(p=>{p.x-=2.5;if(!p.s&&p.x+40<50){p.s=1;sc++;setsc(sc)}});
+  if(P[0].x<-40){P.shift();P.push({x:P[P.length-1].x+180,g:60+Math.random()*180})}
+  if(y<10||y>390||P.some(p=>p.x<74&&p.x+40>50&&(y-10<p.g||y+10>p.g+110)))return fin('Flappy',sc);dr()};
+ go(()=>{y=200;v=0;sc=0;setsc(0);P=[300,480,660].map(a=>({x:a,g:60+Math.random()*180}));lp(tk,20)});}
+function pong(el){const x=cvs(el,'🏓 Пинг-понг · 3 жизни',240,360);let px,bx,b,sc,ls;
+ const mv=e=>{const r=$('#c').getBoundingClientRect();px=Math.max(28,Math.min(212,(e.clientX-r.left)/r.width*240))};$('#c').onpointermove=mv;$('#c').onpointerdown=mv;
+ document.onkeydown=e=>{if(e.key=='ArrowLeft')px=Math.max(28,px-22);if(e.key=='ArrowRight')px=Math.min(212,px+22)};
+ const sv=d=>{b={x:120,y:180,vx:(Math.random()-.5)*4,vy:3*d}};
+ const dr=()=>{x.fillStyle='#0d101c';x.fillRect(0,0,240,360);x.fillStyle='#fff';x.fillRect(px-28,350,56,8);x.fillStyle='#ff5d73';x.fillRect(bx-28,2,56,8);x.beginPath();x.arc(b.x,b.y,5,0,7);x.fill()};
+ const tk=()=>{b.x+=b.vx;b.y+=b.vy;if(b.x<5||b.x>235)b.vx*=-1;bx+=Math.max(-2.6,Math.min(2.6,b.x-bx));
+  if(b.vy>0&&b.y>340&&b.y<352&&Math.abs(b.x-px)<32){b.vy=-Math.min(8,b.vy*1.06);b.vx+=(b.x-px)/8;snd('tap')}
+  if(b.vy<0&&b.y<14&&b.y>2&&Math.abs(b.x-bx)<32)b.vy*=-1;
+  if(b.y<0){sc++;setsc(sc);snd('coin');sv(1)}
+  if(b.y>360){ls++;if(ls>=3)return fin('Пинг-понг',sc);sv(-1)}dr()};
+ go(()=>{px=120;bx=120;sc=0;ls=0;setsc(0);sv(1);lp(tk,16)});}
+function arkan(el){const x=cvs(el,'🧱 Арканоид',300,400);let px,b,B,sc,lv,sp;
+ const mv=e=>{const r=$('#c').getBoundingClientRect();px=Math.max(32,Math.min(268,(e.clientX-r.left)/r.width*300))};$('#c').onpointermove=mv;$('#c').onpointerdown=mv;
+ document.onkeydown=e=>{if(e.key=='ArrowLeft')px=Math.max(32,px-24);if(e.key=='ArrowRight')px=Math.min(268,px+24)};
+ const mk=()=>{B=[];for(let r=0;r<5;r++)for(let c=0;c<6;c++)B.push({x:c*50+2,y:r*20+30,c:r})};
+ const sv=()=>{b={x:px,y:365,vx:2*(Math.random()<.5?1:-1),vy:-sp}};
+ const cl=['#ff5d73','#ff8a5c','#ffd166','#2ee59d','#4facfe'];
+ const dr=()=>{x.fillStyle='#0d101c';x.fillRect(0,0,300,400);B.forEach(k=>{x.fillStyle=cl[k.c];x.fillRect(k.x,k.y,46,16)});x.fillStyle='#fff';x.fillRect(px-32,380,64,8);x.beginPath();x.arc(b.x,b.y,5,0,7);x.fill();x.font='12px sans-serif';x.fillText('❤'.repeat(lv),6,394)};
+ const tk=()=>{b.x+=b.vx;b.y+=b.vy;if(b.x<5||b.x>295)b.vx*=-1;if(b.y<5)b.vy=Math.abs(b.vy);
+  if(b.vy>0&&b.y>370&&b.y<386&&Math.abs(b.x-px)<36){b.vy=-Math.abs(b.vy);b.vx=(b.x-px)/9;snd('tap')}
+  const i=B.findIndex(k=>b.x>k.x&&b.x<k.x+46&&b.y>k.y&&b.y<k.y+16);
+  if(i>=0){B.splice(i,1);b.vy*=-1;sc+=10;setsc(sc);snd('coin');if(!B.length){mk();sp+=.6;sv()}}
+  if(b.y>400){lv--;if(lv<1)return fin('Арканоид',sc);sv()}dr()};
+ go(()=>{px=150;sc=0;lv=3;sp=3.5;setsc(0);mk();sv();lp(tk,16)});}
+function tetris(el){const x=cvs(el,'🟦 Тетрис',150,300,'<div class="row" style="margin-top:8px"><button class="s" data-k="l">⬅</button><button class="s" data-k="u">⟳</button><button class="s" data-k="d">⬇</button><button class="s" data-k="r">➡</button></div>');
+ const S=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]],[[0,1,1],[1,1,0]],[[1,1,0],[0,1,1]]],C=['#4facfe','#ffd166','#c471f5','#ff8a5c','#6cc4ff','#2ee59d','#ff5d73'];
+ let g,p,px,py,sc,on=0;
+ const rot=m=>m[0].map((_,i)=>m.map(r=>r[i]).reverse());
+ const ok=(m,a,b)=>m.every((r,j)=>r.every((v,i)=>!v||(a+i>=0&&a+i<10&&b+j<20&&!g[b+j][a+i])));
+ const nw=()=>{const k=Math.random()*7|0;p={m:S[k],c:C[k]};px=3;py=0;return ok(p.m,px,py)};
+ const dr=()=>{x.fillStyle='#0d101c';x.fillRect(0,0,150,300);g.forEach((r,j)=>r.forEach((v,i)=>{if(v){x.fillStyle=v;x.fillRect(i*15,j*15,14,14)}}));if(p){x.fillStyle=p.c;p.m.forEach((r,j)=>r.forEach((v,i)=>{if(v)x.fillRect((px+i)*15,(py+j)*15,14,14)}))}};
+ const st=()=>{if(ok(p.m,px,py+1))py++;else{p.m.forEach((r,j)=>r.forEach((v,i)=>{if(v)g[py+j][px+i]=p.c}));g=g.filter(r=>r.some(v=>!v));const n=20-g.length;while(g.length<20)g.unshift(Array(10).fill(0));if(n){sc+=n*100;setsc(sc);snd('coin')}if(!nw()){on=0;dr();return fin('Тетрис',sc)}}dr()};
+ const act=k=>{if(!on)return;if(k=='l'&&ok(p.m,px-1,py))px--;if(k=='r'&&ok(p.m,px+1,py))px++;if(k=='u'){const r=rot(p.m);if(ok(r,px,py))p.m=r}if(k=='d')return st();dr()};
+ el.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>act(b.dataset.k));
+ document.onkeydown=e=>{const k={ArrowLeft:'l',ArrowRight:'r',ArrowUp:'u',ArrowDown:'d'}[e.key];if(k){e.preventDefault();act(k)}};
+ g=Array.from({length:20},()=>Array(10).fill(0));p=null;dr();
+ go(()=>{g=Array.from({length:20},()=>Array(10).fill(0));sc=0;on=1;setsc(0);nw();lp(st,500)});}
+function sapper(el){let m,o,f,fl=0,over,first,t0;
+ const nb=i=>{const r=i/9|0,c=i%9,L=[];for(let a=-1;a<2;a++)for(let b=-1;b<2;b++){const y=r+a,z=c+b;if((a||b)&&y>=0&&y<9&&z>=0&&z<9)L.push(y*9+z)}return L};
+ const cnt=i=>nb(i).filter(k=>m[k]).length;
+ const rv=i=>{if(o[i]||f[i])return;o[i]=1;if(!cnt(i))nb(i).forEach(rv)};
+ const rs=()=>{m=Array(81).fill(0);o=Array(81).fill(0);f=Array(81).fill(0);over=0;first=1;draw()};
+ const tap=i=>{if(over||o[i])return;if(fl){f[i]^=1;return draw()}if(f[i])return;
+  if(first){first=0;t0=Date.now();let n=0;while(n<10){const k=Math.random()*81|0;if(!m[k]&&k!=i&&!nb(i).includes(k)){m[k]=1;n++}}}
+  if(m[i]){over=1;snd('lose')}else{rv(i);if(o.filter(Boolean).length==71){over=2;rec('Сапёр',Math.max(1,300-((Date.now()-t0)/1000|0)));fx()}}draw()};
+ const col=['','#4facfe','#2ee59d','#ff5d73','#c471f5','#ff8a5c','#0fa3b1','#fff','#aaa'];
+ function draw(){el.innerHTML=`<div class="card"><div class="top"><b>💣 Сапёр</b><span>${over==2?'🎉 Победа':over==1?'💥 Взрыв':'Мин: 10'}</span></div><div style="display:grid;grid-template-columns:repeat(9,1fr);gap:3px;max-width:340px;margin:auto">${m.map((_,i)=>{const sh=o[i]||(over==1&&m[i]);return`<div data-c="${i}" style="aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;cursor:pointer;background:${sh?(m[i]?'#ff5d73':'#ffffff22'):'#ffffff12'};color:${col[sh&&!m[i]?cnt(i):0]}">${sh?(m[i]?'💣':cnt(i)||''):f[i]?'🚩':''}</div>`}).join('')}</div><div class="row" style="margin-top:10px"><button class="${fl?'':'s'}" id="fg">🚩 Флажок: ${fl?'вкл':'выкл'}</button><button class="s" id="rs">Заново</button></div></div>`;
+  el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>tap(+d.dataset.c));$('#fg').onclick=()=>{fl^=1;draw()};$('#rs').onclick=rs}
+ rs()}
+function sudoku(el){const sh=a=>a.sort(()=>Math.random()-.5),T=[0,1,2];
+ const R=sh([...T]).flatMap(b=>sh([...T]).map(r=>b*3+r)),Cc=sh([...T]).flatMap(b=>sh([...T]).map(c=>b*3+c)),D=sh([1,2,3,4,5,6,7,8,9]);
+ const sol=R.flatMap(r=>Cc.map(c=>D[(3*(r%3)+(r/3|0)+c)%9]));let g=[...sol];const fx0=[];sh([...Array(81).keys()]).slice(0,38).forEach(i=>g[i]=0);g.forEach((v,i)=>fx0[i]=v>0);
+ let sel=-1,t0=Date.now(),won=0;
+ const bad=i=>{const v=g[i];if(!v)return 0;const r=i/9|0,c=i%9;return g.some((w,k)=>k!=i&&w==v&&((k/9|0)==r||k%9==c||((k/9/3|0)==(r/3|0)&&(k%9/3|0)==(c/3|0))))};
+ function draw(){el.innerHTML=`<div class="card"><div class="top"><b>🔢 Судоку</b><span>${won?'🎉 Готово!':''}</span></div><div style="display:grid;grid-template-columns:repeat(9,1fr);max-width:340px;margin:auto;border:2px solid #fff8">${g.map((v,i)=>`<div data-c="${i}" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border:1px solid #ffffff22;${i%9%3==2&&i%9<8?'border-right:2px solid #fff8;':''}${(i/9|0)%3==2&&i<72?'border-bottom:2px solid #fff8;':''}background:${sel==i?'#7c6cff66':'transparent'};color:${bad(i)?'#ff5d73':fx0[i]?'#fff':'#6cc4ff'};font-weight:${fx0[i]?800:500}">${v||''}</div>`).join('')}</div><div class="row" style="margin-top:8px;flex-wrap:wrap;gap:4px">${[1,2,3,4,5,6,7,8,9,0].map(n=>`<button class="s" data-n="${n}" style="flex:1 0 17%;padding:10px 0">${n||'⌫'}</button>`).join('')}</div><button class="s" id="rs" style="width:100%;margin-top:8px">Новая игра</button></div>`;
+  el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{sel=+d.dataset.c;draw()});
+  el.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{if(sel<0||fx0[sel]||won)return;g[sel]=+b.dataset.n;if(g.every((v,i)=>v&&!bad(i))){won=1;rec('Судоку',Math.max(1,600-((Date.now()-t0)/1000|0)));fx()}draw()});
+  $('#rs').onclick=()=>sudoku(el)}
+ draw()}
+function words(el){const W=['программа','телефон','монета','клавиатура','динозавр','самолет','конфета','планета','собака','шоколад','космос','гитара','мороженое','компьютер','телескоп','бабочка','велосипед','радуга','математика','библиотека','вертолет','арбуз','крокодил','светофор'],A='абвгдежзийклмнопрстуфхцчшщъыьэюя';
+ let sc=0,w,u,er;const nw=()=>{w=W[Math.random()*W.length|0];u=[];er=0};nw();
+ function draw(){const win=[...w].every(c=>u.includes(c)),lose=er>=6;el.innerHTML=`<div class="card"><div class="top"><b>🔤 Слова</b><span>Серия: ${sc} · рекорд ${(U.rec||{})['Слова']||0}</span></div><p style="text-align:center;font-size:30px;letter-spacing:6px;margin:14px 0">${[...w].map(c=>u.includes(c)||lose?c:'_').join(' ')}</p><p style="text-align:center">${'❤'.repeat(6-er)}${'🖤'.repeat(er)}</p>${win||lose?`<p style="text-align:center"><b>${win?'🎉 Угадал!':'Не угадал. Слово: '+w}</b></p><button id="nx" style="width:100%">Дальше</button>`:`<div class="row" style="flex-wrap:wrap;gap:4px">${[...A].map(c=>`<button class="s" data-l="${c}" ${u.includes(c)?'disabled':''} style="flex:1 0 14%;padding:9px 0">${c}</button>`).join('')}</div>`}</div>`;
+  el.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{const c=b.dataset.l;u.push(c);if(!w.includes(c)){er++;snd('lose')}else snd('tap');const wn=[...w].every(k=>u.includes(k));if(wn){sc++;rec('Слова',sc);fx()}if(er>=6)sc=0;draw()});
+  const n=$('#nx');if(n)n.onclick=()=>{nw();draw()}}
+ draw()}
+function rps(el){let u1,u2,msg='';stop=()=>{u1&&u1();u2&&u2()};const E=['✊','✌️','✋'];
+ function lobby(){stop();el.innerHTML=`<div class="card"><h3>✊✌️✋ Онлайн</h3><input id="bt" type="number" value="100" min="100" placeholder="Ставка"><button id="cr" style="width:100%">Создать комнату</button><p class="err">${msg}</p></div><div class="card"><h4>Открытые комнаты</h4><div id="ls" class="m">…</div></div>`;
+  $('#cr').onclick=async()=>{const bet=+$('#bt').value|0;if(bet<100||bet>U.bal){msg='Ставка от 100 и не больше баланса';return lobby()}msg='';const c='r'+(Math.random()*9000+1000|0);
+   await addBal(-bet);await db.doc('rooms/'+c).set({k:'rps',o:'#',a:me,b:'',bet,ma:'',mb:'',win:'',pa:false,pb:false,ts:Date.now()});room(c)};
+  u1=db.collection('rooms').onSnapshot(s=>{const L=s.docs.filter(d=>{const x=d.data();return x.k=='rps'&&!x.b&&x.a!==me&&!x.win&&Date.now()-x.ts<36e5});
+   $('#ls').innerHTML=L.map(d=>{const x=d.data();return`<p>${x.a} · ставка ${x.bet} <button data-j="${d.id}">Играть</button></p>`}).join('')||'Нет, создай свою и позови друга';
+   el.querySelectorAll('[data-j]').forEach(b=>b.onclick=async()=>{const r=(await db.doc('rooms/'+b.dataset.j).get()).data();if(!r||r.b||U.bal<r.bet){msg='Недоступно';return lobby()}
+    await addBal(-r.bet);await db.doc('rooms/'+b.dataset.j).update({b:me});room(b.dataset.j)})})}
+ function room(c){stop();let paid=false;u2=db.doc('rooms/'+c).onSnapshot(s=>{if(!s.exists)return lobby();const r=s.data(),m=r.a==me?'a':'b',mine=r['m'+m],both=r.ma!==''&&r.mb!=='';
+  if(both&&!r.win){const a=+r.ma,b=+r.mb;db.doc('rooms/'+c).update({win:a==b?'d':(a-b+3)%3==2?'a':'b'});return}
+  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк: ${r.bet*2} 💰</span></div><p>${r.a} vs ${r.b||'ждём соперника…'}</p>
+  ${r.b&&!r.win?`<div class="row" style="gap:8px">${E.map((e,i)=>`<button class="${mine===String(i)?'':'s'}" data-m="${i}" style="font-size:34px;flex:1" ${mine!==''?'disabled':''}>${e}</button>`).join('')}</div><p style="text-align:center" class="m">${mine!==''?'Ждём выбор соперника…':'Выбери ход'}</p>`:''}
+  ${r.win?`<p style="text-align:center;font-size:34px">${E[+r.ma]} vs ${E[+r.mb]}</p><p style="text-align:center"><b>${r.win=='d'?'Ничья, ставки возвращены':r.win==m?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл'}</b></p>`:''}
+  <div class="row"><button class="s" id="lv">${!r.b?'Отменить':'Выйти'}</button></div></div>`;
+  $('#lv').onclick=async()=>{if(!r.b&&!r.win){await addBal(r.bet);await db.doc('rooms/'+c).delete()}lobby()};
+  el.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>db.doc('rooms/'+c).update({['m'+m]:b.dataset.m}));
+  if(r.win&&!paid&&!r['p'+m]&&(r.win=='d'||r.win==m)){paid=true;addBal(r.win=='d'?r.bet:r.bet*2);if(r.win==m){fx();mission('Камень-ножницы-бумага',1)}db.doc('rooms/'+c).update({['p'+m]:true})}})}
+ lobby()}
+
 init();
 </script></body></html>
