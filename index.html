@@ -1,29 +1,29 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>Игровой клуб</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
-:root{--bg:#0b0d17;--t:#f1f3ff;--m:#8a90b0;--a:#7c6cff;--a2:#ff6cc3;--g:#2ee59d;--r:#ff5d73;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#090d18;--t:#f4f6ff;--m:#9aa5bd;--a:#6d7cff;--a2:#9c63ff;--g:#36d6a0;--r:#ff647c;--line:#ffffff18;--panel:#111a2b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:radial-gradient(circle at 15% -10%,#2b2060,transparent 50%),radial-gradient(circle at 100% 5%,#4a1f55,transparent 40%),var(--bg);background-attachment:fixed;color:var(--t);font:16px/1.4 system-ui,sans-serif;min-height:100vh}
-#app{max-width:560px;margin:auto;padding:0 14px 96px}
-header{display:flex;align-items:center;gap:12px;padding:14px 0;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
+body{margin:0;background:radial-gradient(ellipse at 10% 0%,#27356b55,transparent 38%),radial-gradient(ellipse at 95% 8%,#572a7550,transparent 34%),linear-gradient(160deg,#090d18,#0d1423 55%,#090d18);background-attachment:fixed;color:var(--t);font:15px/1.5 Inter,system-ui,-apple-system,sans-serif;min-height:100vh;letter-spacing:.1px}
+#app{max-width:760px;margin:auto;padding:0 16px 104px}
+header{display:flex;align-items:center;gap:12px;padding:16px 0;position:sticky;top:0;z-index:5;backdrop-filter:blur(18px)}
 header>div:nth-child(2){flex:1;line-height:1.2}
-.av{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-weight:800}
-.bal{background:#ffffff14;border:1px solid #ffffff1f;padding:8px 14px;border-radius:99px;font-weight:700;color:var(--g)}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:#0e1020ee;backdrop-filter:blur(16px);border-top:1px solid #ffffff14;z-index:9}
-nav button{flex:1;max-width:110px;background:none;color:var(--m);border-radius:14px;padding:6px 0;font-size:11px;font-weight:600}
+.av{width:46px;height:46px;border-radius:16px;background:linear-gradient(145deg,#7185ff,#a05cff 65%,#e46ac5);display:flex;align-items:center;justify-content:center;font-weight:850;box-shadow:0 7px 24px #785cff55;border:1px solid #ffffff35}
+.bal{background:#132b2a;border:1px solid #36d6a044;padding:9px 14px;border-radius:99px;font-weight:800;color:#63edbd;white-space:nowrap}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:7px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#0a1020eF;backdrop-filter:blur(22px);border-top:1px solid #ffffff18;z-index:9}
+nav button{flex:1;max-width:132px;background:transparent;color:var(--m);border:1px solid transparent;border-radius:16px;padding:7px 0;font-size:11px;font-weight:700}
 nav button i{display:block;font-style:normal;font-size:22px}
-nav button.on{color:#fff;background:#ffffff1a}
-.card{background:linear-gradient(180deg,#ffffff0e,#ffffff06);border:1px solid #ffffff14;border-radius:20px;padding:16px;margin:12px 0}
+nav button.on{color:#fff;background:linear-gradient(135deg,#6d7cff35,#a05cff30);border-color:#9b8cff45}
+ .card{background:linear-gradient(145deg,#172238eF,#101827f2);border:1px solid #ffffff17;border-radius:22px;padding:18px;margin:14px 0;box-shadow:0 12px 34px #0002;backdrop-filter:blur(12px)}
 h2,h3,h4{margin:0 0 10px}
-button{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border:0;border-radius:14px;padding:12px 16px;font:inherit;font-weight:600;cursor:pointer;transition:transform .1s}
-button:active{transform:scale(.96)}button.s{background:#ffffff1a}button.g{background:linear-gradient(135deg,#2ee59d,#0fa3b1);color:#042}button.r{background:var(--r)}
-input{width:100%;padding:12px 14px;border-radius:14px;border:1px solid #ffffff1f;background:#ffffff0d;color:var(--t);font:inherit;margin:5px 0;outline:0}
+button{background:linear-gradient(135deg,#687dff,#985eff);color:#fff;border:1px solid #ffffff1a;border-radius:15px;padding:12px 17px;font:inherit;font-weight:750;cursor:pointer;transition:transform .12s,filter .12s;box-shadow:0 5px 16px #536aff24}button:hover{filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+button:active{transform:scale(.97)}button.s{background:#ffffff0d;border:1px solid #ffffff20;box-shadow:none;color:#e6eaff}button.g{background:linear-gradient(135deg,#28c994,#16a6a5);color:#05251e}button.r{background:linear-gradient(135deg,#f05c75,#cf3e68)}
+input,select,textarea{width:100%;padding:13px 14px;border-radius:14px;border:1px solid #ffffff20;background:#0a1220;color:var(--t);font:inherit;margin:6px 0;outline:0}input:focus,select:focus,textarea:focus{border-color:#8792ff;box-shadow:0 0 0 3px #7c83ff20}
 input:focus{border-color:var(--a)}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .m{color:var(--m);font-size:14px}.err{color:var(--r)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.gc{border-radius:22px;padding:18px 10px;text-align:center;color:#fff;cursor:pointer;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:4px;box-shadow:0 8px 24px #0006}
-.gc b{font-size:42px}.gc span{font-weight:700}.gc small{opacity:.85;font-size:12px}.gc:active{transform:scale(.96)}
+ .gc{border-radius:24px;padding:20px 12px;text-align:center;color:#fff;cursor:pointer;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:5px;box-shadow:0 12px 30px #0005;border:1px solid #ffffff40;position:relative;overflow:hidden;transition:transform .16s,filter .16s}.gc:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ffffff25,transparent 52%);pointer-events:none}.gc>*{position:relative}.gc:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.gc b{font-size:46px;filter:drop-shadow(0 4px 8px #0004)}.gc span{font-weight:700}.gc small{opacity:.85;font-size:12px}.gc:active{transform:scale(.96)}
 .b4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#ffffff0d;padding:7px;border-radius:16px;touch-action:none}
 .t{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#ffffff10;font-weight:800;font-size:22px}
 .b3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:auto}
@@ -40,7 +40,29 @@ canvas{width:100%;max-width:340px;display:block;margin:auto;background:#ffffff0a
 .pc.w{background:radial-gradient(circle at 30% 30%,#fff,#aab)}.pc.b{background:radial-gradient(circle at 30% 30%,#666,#111)}
 .dp{display:grid;grid-template-columns:repeat(3,76px);gap:8px;justify-content:center;margin-top:14px}.dp button{height:62px;font-size:26px;padding:0}
 canvas,.pp{touch-action:none}.card{animation:in .3s}@keyframes in{from{opacity:0;transform:translateY(8px)}}
-header{background:linear-gradient(#0b0d17cc,transparent);margin:0 -14px;padding-left:14px;padding-right:14px}
+header{background:linear-gradient(#090f1feF,#090f1f99,transparent);margin:0 -16px;padding-left:16px;padding-right:16px}h2{font-size:24px;letter-spacing:-.5px}h3{font-size:18px} .m{color:#a3aec7}.announce{box-shadow:0 10px 28px #0003} @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}#app{padding-left:22px;padding-right:22px}}
+.announce{border:1px solid #ffd16666;background:linear-gradient(135deg,#ffd16618,#ff8a5c12);border-radius:16px;padding:12px 14px;margin:10px 0 14px}
+.announce b{color:#ffd166}
+.durak-screen{position:fixed;inset:0;z-index:20;background:radial-gradient(ellipse at center,#176447 0%,#0b382c 65%,#071f1a 100%);padding:env(safe-area-inset-top) 10px env(safe-area-inset-bottom);overflow:auto;display:flex;flex-direction:column}
+.durak-screen .durak-head{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#fff;padding:6px 2px}
+.durak-screen .durak-table{flex:1;min-height:180px;border:8px solid #70452d;border-radius:28px;background:radial-gradient(ellipse,#16704e,#0c4b37);box-shadow:inset 0 0 25px #001b12,0 10px 30px #0008;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+.durak-screen .tbl{background:#062e2344;border:1px solid #ffffff22;min-height:120px;justify-content:center;align-content:center;gap:10px}
+.durak-screen .hand{justify-content:center;align-items:flex-end;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;padding:10px 3px 14px;min-height:112px}
+.durak-screen .cd{width:clamp(42px,10vw,68px);height:clamp(64px,15vw,100px);min-width:clamp(42px,10vw,68px);aspect-ratio:5/7;border:1px solid #d8d8d8;border-radius:9px;background:linear-gradient(145deg,#fff,#f0eee8);color:#17202a;padding:5px 3px;margin:0;font-size:clamp(13px,3vw,18px);box-shadow:0 4px 9px #001a12aa;display:flex;flex-direction:column;justify-content:space-between;align-items:center;line-height:1.05}
+.durak-screen .cd .suit{font-size:clamp(17px,4vw,25px);line-height:1}
+.durak-screen .cd.rd{color:#d9273e}
+.durak-screen .cd.face{background:linear-gradient(145deg,#fff8df,#e9d6a2);border:2px solid #c39b4b}
+.durak-screen .cd.selcard{transform:translateY(-9px);outline:3px solid #ffd166}
+.durak-screen .pr{align-items:center}
+.durak-screen .pr .cd+.cd{margin-top:0;margin-left:-22px}
+.durak-screen .durak-actions{display:flex;gap:8px;justify-content:center;padding:7px 0}
+.durak-screen .durak-actions button{min-width:110px}
+.durak-screen .durak-players{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:8px 0}
+.durak-screen .durak-player{background:#ffffff20;border:1px solid #ffffff30;border-radius:20px;padding:5px 10px;color:#fff;font-size:12px}
+.durak-screen .durak-player.me{border-color:#ffd166;color:#ffd166}
+.durak-screen .durak-status{color:#fff;text-align:center;font-weight:700;padding:8px}
+.durak-screen .durak-back{background:#ffffff22;border:1px solid #ffffff33}
+@media(min-width:700px){.durak-screen{padding-left:max(24px,calc((100vw - 1100px)/2));padding-right:max(24px,calc((100vw - 1100px)/2))}.durak-screen .hand{min-height:130px}}
 .cd{background:#fff;color:#111;padding:9px 5px;min-width:44px;font-weight:800;border-radius:9px;margin:2px;font-size:15px}.cd.rd{color:#e5484d}.tbl{display:flex;flex-wrap:wrap;gap:8px;min-height:80px;padding:10px;background:#ffffff0a;border-radius:14px;margin:8px 0}.pr{display:flex;flex-direction:column}.pr .cd+.cd{margin-top:-20px;margin-left:14px;box-shadow:0 0 0 2px #7c6cff}.hand{display:flex;flex-wrap:wrap;margin-top:10px}.sel2{outline:2px solid #ffd166;border-radius:10px}
 </style></head><body><div id="app"></div>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -66,16 +88,37 @@ function authView(msg){cleanup();A.innerHTML=`<div class="card"><h2>🎮 Игр�
  $('#rg').onclick=reg}
 async function reg(){const l=$('#l').value.trim().toLowerCase(),p=$('#p').value;
  if(!/^[a-z0-9_]{3,16}$/.test(l)||p.length<4||l===ADM)return authView('Логин 3–16 символов (a-z, 0-9, _), пароль от 4');
- if((await ud(l).get()).exists)return authView('Такой логин занят');
- await ud(l).set({pw:await H(l+':'+p),bal:500,loan:0,due:0,blocked:false,ts:Date.now()});
- login(l,p)}
+ const existing=await ud(l).get();
+ if(existing.exists&&existing.data().status!=='rejected')return authView('Такой логин занят');
+ await ud(l).set({pw:await H(l+':'+p),bal:500,loan:0,due:0,blocked:false,approved:false,status:'pending',ts:Date.now()});
+ authView('Заявка отправлена. Дождись подтверждения администратора, после этого сможешь войти.')}
 async function login(l,p,auto){
  const h=await H(l+':'+p);let s=await ud(l).get();
  if(l===ADM){if(h!==(s.exists?s.data().pw:AH))return authView('Неверный логин или пароль');
   if(!s.exists)await ud(l).set({pw:h,bal:0,loan:0,due:0,blocked:false,ts:Date.now(),admin:true})}
  else if(!s.exists||s.data().pw!==h){LS.s(null);return authView('Неверный логин или пароль')}
+ else if(s.data().approved===false||s.data().status==='pending'){LS.s(null);return authView('Аккаунт ещё ожидает подтверждения администратора.')}
+ else if(s.data().status==='rejected'){LS.s(null);return authView('Заявка отклонена. Обратись к администратору.')}
  me=l;LS.s({l,p});tab='games';
+ if(l===ADM)startAdminNotifications();
  unU=ud(l).onSnapshot(x=>{U=x.data();checkDue();if(!stop||tab!=='play')render()});}
+let stopPending=null,pendingSeen=null;
+function adminToast(login){
+ let t=document.getElementById('adminToast');
+ if(!t){t=document.createElement('div');t.id='adminToast';t.style.cssText='position:fixed;z-index:1000;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;max-width:520px;margin:auto;padding:14px 16px;border-radius:16px;background:#182641;border:1px solid #8b9cff88;color:#fff;box-shadow:0 12px 35px #0009;font-weight:700';document.body.appendChild(t)}
+ t.textContent='🔔 Новая заявка на регистрацию: '+login+' · открой раздел «Админ»';
+ if('Notification' in window&&Notification.permission==='granted'){try{new Notification('Новая регистрация',{body:'Игрок '+login+' ожидает подтверждения'})}catch(e){}}
+ clearTimeout(t._timer);t._timer=setTimeout(()=>t.remove(),6500);
+}
+function startAdminNotifications(){
+ if(stopPending)stopPending();
+ pendingSeen=null;
+ stopPending=db.collection('users').onSnapshot(s=>{
+  const now=new Set(s.docs.filter(d=>d.data().approved===false||d.data().status==='pending').map(d=>d.id));
+  if(pendingSeen!==null)now.forEach(l=>{if(!pendingSeen.has(l))adminToast(l)});
+  pendingSeen=now;
+ });
+}
 async function checkDue(){if(U&&U.loan>0&&!U.blocked&&Date.now()>U.due){U.blocked=true;
  await ud(me).update({blocked:true});await db.doc('alerts/'+me).set({login:me,amt:U.loan,ts:Date.now()})}}
 const NAV=[['games','🎮','Игры'],['top','🏆','Топ'],['chat','💬','Чат'],['profile','👤','Профиль']];
@@ -85,7 +128,8 @@ function shell(inner){const nv=(me===ADM?NAV.filter(n=>n[0]!='profile'):NAV).con
 const GAMES=[['Крестики-нолики','❌','Онлайн · ставки','#ff6cc3','#7c6cff',ttt],['Шашки','⚫','Онлайн · ставки','#ffb86c','#ff5d73',checkers],['Дурак','🃏','Онлайн · 2–8 игроков','#f7971e','#ffd200',durak],['2048','🔢','Одиночная','#2ee59d','#0fa3b1',g2048],['Змейка','🐍','Одиночная','#7cf29a','#1fb26b',snake],['Блок Бласт','🧱','Одиночная','#6cc4ff','#7c6cff',blast],['Кликер','👆','10 секунд','#ffd166','#ff8a5c',clicker],['Викторина','❓','Для всех','#c471f5','#fa71cd',quiz]];
 function render(){if(!U)return;cleanup();
  if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return leaders();if(tab=='chat')return chat();if(tab=='play')return;
- shell(`<h2>Выбери игру</h2><div class="grid">${GAMES.map((g,i)=>`<div class="gc" data-i="${i}" style="background:linear-gradient(135deg,${g[3]},${g[4]})"><b>${g[1]}</b><span>${g[0]}</span><small>${g[2]}</small></div>`).join('')}</div>`);
+ shell(`<div id="globalAnnouncement"></div><div class="top" style="margin:18px 0 12px"><div><div class="m">ТВОЯ ПЛОЩАДКА</div><h2 style="margin:2px 0">Выбери игру</h2></div><span class="m">${GAMES.length} игр</span></div><div class="grid">${GAMES.map((g,i)=>`<div class="gc" data-i="${i}" style="background:linear-gradient(135deg,${g[3]},${g[4]})"><b>${g[1]}</b><span>${g[0]}</span><small>${g[2]}</small></div>`).join('')}</div>`);
+ db.doc('settings/global').get().then(d=>{const box=$('#globalAnnouncement');if(box&&d.exists&&d.data().announcement)box.innerHTML=`<div class="announce"><b>📢 Объявление для всех</b><div>${esc(d.data().announcement)}</div></div>`});
  A.querySelectorAll('[data-i]').forEach(c=>c.onclick=()=>{tab='play';shell('<button class="s" id="bk" style="margin-bottom:6px">← Назад</button><div id="g"></div>');$('#bk').onclick=()=>{cleanup();tab='games';render()};GAMES[c.dataset.i][5]($('#g'))})}
 function profile(){const left=U.loan?Math.max(0,U.due-Date.now()):0,hrs=Math.ceil(left/36e5);
  shell(`<div class="card"><h3>Баланс: ${U.bal} 💰</h3>${U.loan?`<p>Долг: <b>${U.loan}</b>. Осталось ~${hrs} ч.</p><button class="g" id="rp">Вернуть кредит</button>`:
@@ -94,13 +138,19 @@ function profile(){const left=U.loan?Math.max(0,U.due-Date.now()):0,hrs=Math.cei
  const ln=$('#ln');if(ln)ln.onclick=()=>{const a=+$('#la').value|0;if(a<1||a>1000){note='Сумма от 1 до 1000';return render()}note='';ud(me).update({bal:U.bal+a,loan:a,due:Date.now()+864e5})};
  const rp=$('#rp');if(rp)rp.onclick=async()=>{if(U.bal<U.loan){note='Не хватает монет';return render()}note='';await ud(me).update({bal:U.bal-U.loan,loan:0,due:0,blocked:false});await db.doc('alerts/'+me).delete().catch(()=>{})};
  $('#tx').onclick=async()=>{const l=$('#tl').value.trim().toLowerCase(),a=+$('#ta').value|0;if(!l||l===me||a<1||a>U.bal||!(await ud(l).get()).exists){note='Проверь ник и сумму';return render()}await ud(l).update({bal:firebase.firestore.FieldValue.increment(a)});await ud(me).update({bal:U.bal-a});note='Отправлено '+a+' → '+l;render()};
- $('#lo').onclick=()=>{LS.s(null);unU&&unU();me=U=null;authView()}}
+ $('#lo').onclick=()=>{LS.s(null);unU&&unU();if(stopPending){stopPending();stopPending=null}me=U=null;authView()}}
 function admin(){window._al=[];window._d=null;shell('<p class="m">Загрузка…</p>');let u1=db.collection('users').onSnapshot(us=>{const draw=()=>{if(tab!=='admin')return;const al=window._al||[];
- const L=us.docs.filter(d=>d.id!==ADM);$('#v').innerHTML=`<div class="card"><h3>Зарегистрировано: ${L.length}</h3>
+ const pending=us.docs.filter(d=>d.id!==ADM&&(d.data().approved===false||d.data().status==='pending'));
+ const L=us.docs.filter(d=>d.id!==ADM&&d.data().approved!==false&&d.data().status!=='pending'&&d.data().status!=='rejected');$('#v').innerHTML=`<div class="card"><div class="top"><h3>🔔 Заявки на регистрацию</h3><b style="color:var(--g)">${pending.length}</b></div><p class="m">Новые игроки не смогут войти, пока ты не подтвердишь их аккаунт.</p><button class="s" id="notif">Включить уведомления браузера</button>${pending.map(d=>`<div class="row" style="padding:10px 0;border-top:1px solid #ffffff18"><div><b>${esc(d.id)}</b><div class="m">Заявка · ${new Date(d.data().ts||Date.now()).toLocaleString()}</div></div><button class="g" data-approve="${esc(d.id)}">Подтвердить</button><button class="r" data-reject="${esc(d.id)}">Отклонить</button></div>`).join('')||'<p class="m">Новых заявок нет</p>'}</div><div class="card"><h3>Зарегистрировано: ${L.length}</h3>
 <div class="row"><input id="am" type="number" placeholder="Сумма"><button class="g" id="tp">Пополнить баланс</button></div></div>
 <div class="card"><h3>🔔 Должники (${al.length})</h3>${al.map(a=>`<p><b>${a.login}</b> не вернул ${a.amt}<br><button data-u="${a.login}">Разблокировать</button> <button class="r" data-k="${a.login}">Оставить</button></p>`).join('')||'<p class="m">Нет</p>'}</div>
-<div class="card"><h3>🔑 Сменить пароль</h3><input id="pl" placeholder="Логин (свой или участника)"><input id="pp" placeholder="Новый пароль"><button id="pw">Сменить</button></div><div class="card"><table><tr><th>Логин</th><th>Баланс</th><th>Долг</th></tr>${L.map(d=>{const x=d.data();return`<tr><td>${d.id}${x.blocked?' 🚫':''}</td><td>${x.bal}</td><td>${x.loan}</td></tr>`}).join('')}</table></div>`;
+<div class="card"><h3>📢 Объявление на главном экране</h3><input id="ann" maxlength="240" placeholder="Текст объявления"><div class="row"><button id="as" class="g">Опубликовать</button><button id="ac" class="s">Убрать</button></div></div>
+ <div class="card"><h3>💰 Мой баланс администратора</h3><p>Сейчас: <b>${U.bal}</b></p><button id="zero" class="r">Обнулить мой баланс</button></div>
+ <div class="card"><h3>🔑 Сменить пароль</h3><input id="pl" placeholder="Логин (свой или участника)"><input id="pp" placeholder="Новый пароль"><button id="pw">Сменить</button></div><div class="card"><table><tr><th>Логин</th><th>Баланс</th><th>Долг</th></tr>${L.map(d=>{const x=d.data();return`<tr><td>${d.id}${x.blocked?' 🚫':''}</td><td>${x.bal}</td><td>${x.loan}</td></tr>`}).join('')}</table></div>`;
  $('#tp').onclick=()=>{const n=+$('#am').value;if(n>0)addBal(n)};
+ const nf=$('#notif');if(nf)nf.onclick=async()=>{if(!('Notification' in window)){nf.textContent='Браузер не поддерживает уведомления';return}const p=await Notification.requestPermission();nf.textContent=p==='granted'?'Уведомления включены ✓':'Разрешение не выдано'};
+ A.querySelectorAll('[data-approve]').forEach(b=>b.onclick=async()=>{await ud(b.dataset.approve).update({approved:true,status:'approved',approvedAt:Date.now()});adminToast('Аккаунт '+b.dataset.approve+' подтверждён');});
+ A.querySelectorAll('[data-reject]').forEach(b=>b.onclick=async()=>{if(confirm('Отклонить заявку '+b.dataset.reject+'?'))await ud(b.dataset.reject).update({approved:false,status:'rejected'});});
  $('#pw').onclick=async()=>{const l=$('#pl').value.trim().toLowerCase(),p=$('#pp').value;if(p.length<4||!(await ud(l).get()).exists){$('#pw').textContent='Ошибка: логин или пароль';return}await ud(l).update({pw:await H(l+':'+p)});if(l===ADM)LS.s({l,p});$('#pw').textContent='Готово ✓'};
  A.querySelectorAll('[data-u]').forEach(b=>b.onclick=async()=>{await ud(b.dataset.u).update({blocked:false,due:Date.now()+864e5});db.doc('alerts/'+b.dataset.u).delete()});
  A.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>db.doc('alerts/'+b.dataset.k).delete())};
@@ -153,7 +203,7 @@ function checkers(el){let u1,u2,msg='',sel=-1,paid=false;stop=()=>{u1&&u1();u2&&
  function room(c){stop();paid=false;u2=db.doc('rk/'+c).onSnapshot(s=>{if(!s.exists)return lobby();const r=s.data();draw(c,r,r.w==me?'w':'b')})}
  function draw(c,r,m){const myT=r.turn==m&&r.b&&!r.win,bd=r.bd,caps=CAP(bd,m),tg={};
   if(myT&&sel>=0){const L=r.lock>=0&&sel!=r.lock?[]:(caps.length?(caps.includes(sel)?mv(bd,sel,m,1):[]):mv(bd,sel,m,0));L.forEach(x=>tg[x[0]]=x[1])}
-  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк ${r.bet*2} 💰</span></div><p>${r.w} ⚪ vs ${r.b||'ждём соперника…'} ⚫ · ты ${m=='w'?'белые':'чёрные'}</p><div class="ck">${[...bd].map((ch,i)=>{const R=i/8|0,C=i%8;return`<div data-c="${i}" class="${(R+C)%2?'dk':'lt'}${sel==i?' sl':''}${i in tg?' tg':''}">${ch=='-'?'':`<span class="pc ${lo(ch)}">${ch==ch.toUpperCase()?'♛':''}</span>`}</div>`}).join('')}</div><p style="text-align:center"><b>${r.win?(r.win==m?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл'):!r.b?'':myT?'Твой ход'+(r.lock>=0?' (бей дальше)':''):'Ход соперника'}</b></p><button class="s" id="lv">${!r.b?'Отменить':'Выйти'}</button></div>`;
+  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк ${r.bet*2} 💰</span></div><p>${r.w} ⚪ vs ${r.b||'ждём соперника…'} ⚫ · ты ${m=='w'?'белые':'чёрные'}</p><div class="ck">${[...Array(64).keys()].map(pos=>{const i=m=='b'?63-pos:pos,ch=bd[i],R=i/8|0,C=i%8;return`<div data-c="${i}" class="${(R+C)%2?'dk':'lt'}${sel==i?' sl':''}${i in tg?' tg':''}">${ch=='-'?'':`<span class="pc ${lo(ch)}">${ch==ch.toUpperCase()?'♛':''}</span>`}</div>`}).join('')}</div><p style="text-align:center"><b>${r.win?(r.win==m?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл'):!r.b?'':myT?'Твой ход'+(r.lock>=0?' (бей дальше)':''):'Ход соперника'}</b></p><button class="s" id="lv">${!r.b?'Отменить':'Выйти'}</button></div>`;
   $('#lv').onclick=async()=>{if(!r.b&&!r.win){await addBal(r.bet);await db.doc('rk/'+c).delete()}lobby()};
   el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const i=+d.dataset.c;if(!myT)return;
    if(bd[i]!='-'&&lo(bd[i])==m&&(r.lock<0||r.lock==i)){sel=i;return draw(c,r,m)}
@@ -185,7 +235,7 @@ function quiz(el){const isA=me===ADM;let cur=null,raw=[];
   d.querySelectorAll('[data-p2]').forEach(b=>b.onclick=async()=>{const u=b.dataset.p2,a=+d.querySelector('[data-s="'+u+'"]').value|0;if(a>0&&a<=U.bal){await ud(u).update({bal:firebase.firestore.FieldValue.increment(a)});await ud(me).update({bal:U.bal-a});b.textContent='✓'}})}}
 function durak(el){let u1,u2,msg='',paid=false,selT=-1,R=9;stop=()=>{u1&&u1();u2&&u2()};
  const N13=['2','3','4','5','6','7','8','9','10','В','Д','К','Т'],SU=['♠','♥','♦','♣'],rk=c=>c%R,su=c=>c/R|0,nm=c=>N13[rk(c)+(R==9?4:0)]+SU[su(c)];
- const card=(c,x)=>`<button class="cd ${su(c)%2?'rd':''}" ${x||''}>${nm(c)}</button>`;
+ const card=(c,x)=>{const rank=N13[rk(c)+(R==9?4:0)],suit=SU[su(c)],red=su(c)==1||su(c)==2,face=['В','Д','К','Т'].includes(rank);const art={В:'🛡️',Д:'👑',К:'♛',Т:'⭐'}[rank]||'';return`<button class="cd ${red?'rd':''} ${face?'face':''} ${x&&x.includes('data-h')&&selT===c?'selcard':''}" ${x||''}><span>${rank}</span><span class="suit">${suit}</span>${face?`<span>${art}</span>`:`<span>${suit}</span>`}</button>`};
  const cl=o=>JSON.parse(JSON.stringify(o));
  const nxt=(r,i)=>{for(let k=1;k<=r.p.length;k++){const j=(i+k)%r.p.length;if(!r.out.includes(r.p[j]))return j}return i};
  function refill(r,h,dk){const n=r.p.length,o=[];for(let k=0;k<n;k++){const j=(r.at+k)%n;if(j!=r.df)o.push(r.p[j])}o.push(r.p[r.df]);o.forEach(x=>{while(h[x].length<6&&dk.length)h[x].push(dk.shift())})}
@@ -193,12 +243,13 @@ function durak(el){let u1,u2,msg='',paid=false,selT=-1,R=9;stop=()=>{u1&&u1();u2
   if(alive.length<2){u.st='end';u.loser=alive[0]||''}else{if(out.includes(r.p[at]))at=nxt(o2,at);u.at=at;u.df=nxt(o2,at)}
   db.doc('rd/'+c).update(u)}
  const bito=(c,r)=>{const h=cl(r.hands),dk=[...r.deck];refill(r,h,dk);settle(c,r,h,dk,r.df)};
- const take=(c,r)=>{const h=cl(r.hands),dk=[...r.deck],d=r.p[r.df];(r.table||[]).forEach(x=>{h[d].push(x.a);if(x.d>=0)h[d].push(x.d)});refill(r,h,dk);settle(c,r,h,dk,nxt(r,r.df))};
+ const take=(c,r)=>{db.doc('rd/'+c).update({taking:true})};
+  const confirmTake=(c,r)=>{const h=cl(r.hands),dk=[...r.deck],d=r.p[r.df];(r.table||[]).forEach(x=>{h[d].push(x.a);if(x.d>=0)h[d].push(x.d)});refill(r,h,dk);settle(c,r,h,dk,nxt(r,r.df));db.doc('rd/'+c).update({taking:false})};
  function play(c,r,k){if(r.st!='play'||r.out.includes(me))return;const t=cl(r.table||[]),h=cl(r.hands),def=r.p[r.df];if(!h[me].includes(k))return;
   if(me==def){const i=selT>=0&&t[selT]&&t[selT].d<0?selT:t.findIndex(x=>x.d<0);if(i<0)return;const a=t[i].a;
    if(!((su(k)==su(a)&&rk(k)>rk(a))||(su(k)==r.trump&&su(a)!=r.trump)))return;t[i].d=k}
   else{const rs=t.flatMap(x=>x.d>=0?[rk(x.a),rk(x.d)]:[rk(x.a)]),und=t.filter(x=>x.d<0).length;
-   if(t.length?!rs.includes(rk(k)):me!=r.p[r.at])return;if(t.length>=6||und>=h[def].length)return;t.push({a:k,d:-1})}
+   if(t.length?!rs.includes(rk(k)):me!=r.p[r.at])return;if(t.length>=6||t.filter(x=>x.d<0).length>=h[def].length)return;t.push({a:k,d:-1})}
   h[me].splice(h[me].indexOf(k),1);selT=-1;db.doc('rd/'+c).update({hands:h,table:t})}
  function lobby(){stop();el.innerHTML=`<div class="card"><h3>🃏 Дурак онлайн (2–8)</h3><input id="bt" type="number" value="100" min="100" placeholder="Ставка"><button id="cr" style="width:100%;margin-top:6px">Создать стол</button><p class="err">${msg}</p></div><div class="card"><h4>Открытые столы</h4><div id="ls" class="m">…</div></div>`;
   $('#cr').onclick=async()=>{const bet=+$('#bt').value|0;if(bet<100||bet>U.bal){msg='Ставка от 100 и не больше баланса';return lobby()}msg='';const c=String(Math.random()*9000+1000|0);await addBal(-bet);await db.doc('rd/'+c).set({host:me,bet,st:'wait',p:[me],ts:Date.now()});room(c)};
