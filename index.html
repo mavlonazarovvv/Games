@@ -352,8 +352,8 @@ function laneGame(el,C){const W=320,H=480,N=C.N,X=i=>W/N*(i+.5);let ln=1,px=X(1)
   $('#rsc').textContent=(d/10|0)+' · 🪙'+cc;draw();raf=requestAnimationFrame(tick)}
  $('#go').onclick=()=>{if(run)return;ln=1;px=X(1);z=0;ob=[];cn=[];d=0;cc=0;sp=C.sp;tm=0;run=true;last=0;$('#go').style.display='none';raf=requestAnimationFrame(tick)};
  stop=()=>{cancelAnimationFrame(raf);document.removeEventListener('keydown',k)};draw()}
-const runner=el=>laneGame(el,{N:3,n:'Бегун',t:'🏃 Неон-бегун',jump:1,sp:240,acc:5,bg:['#14073a','#2a0f5c'],lc:'#7c6cff99'});
-const racer=el=>laneGame(el,{N:4,n:'Гонка',t:'🏎 Гонка',jump:0,sp:300,acc:6,bg:['#1b1f2e','#0d101c'],lc:'#ffffff66'});
+function runner(el){return laneGame(el,{N:3,n:'Бегун',t:'🏃 Неон-бегун',jump:1,sp:240,acc:5,bg:['#14073a','#2a0f5c'],lc:'#7c6cff99'})}
+function racer(el){return laneGame(el,{N:4,n:'Гонка',t:'🏎 Гонка',jump:0,sp:300,acc:6,bg:['#1b1f2e','#0d101c'],lc:'#ffffff66'})}
 function shooter(el){let u1,u2,msg='',paid=false,raf,iv,gm=false,R={},m='a',o='b',P={x:40,y:160},O={x:280,y:160},B=[],ky={l:0,r:0,u:0,d:0,f:0},last=0,lf=0,lh=0,lastKo=0,fl=0;
  const SP=()=>m=='a'?{x:40,y:160}:{x:280,y:160},cl=v=>Math.max(12,Math.min(308,v));
  stop=()=>{u1&&u1();u2&&u2();cancelAnimationFrame(raf);clearInterval(iv);gm=false};
