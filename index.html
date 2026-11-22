@@ -1,29 +1,29 @@
 <!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>Игровой клуб</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
-:root{--bg:#090d18;--t:#f4f6ff;--m:#9aa5bd;--a:#6d7cff;--a2:#9c63ff;--g:#36d6a0;--r:#ff647c;--line:#ffffff18;--panel:#111a2b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#0b0d17;--t:#f1f3ff;--m:#8a90b0;--a:#7c6cff;--a2:#ff6cc3;--g:#2ee59d;--r:#ff5d73;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:radial-gradient(ellipse at 10% 0%,#27356b55,transparent 38%),radial-gradient(ellipse at 95% 8%,#572a7550,transparent 34%),linear-gradient(160deg,#090d18,#0d1423 55%,#090d18);background-attachment:fixed;color:var(--t);font:15px/1.5 Inter,system-ui,-apple-system,sans-serif;min-height:100vh;letter-spacing:.1px}
-#app{max-width:760px;margin:auto;padding:0 16px 104px}
-header{display:flex;align-items:center;gap:12px;padding:16px 0;position:sticky;top:0;z-index:5;backdrop-filter:blur(18px)}
+body{margin:0;background:radial-gradient(circle at 15% -10%,#2b2060,transparent 50%),radial-gradient(circle at 100% 5%,#4a1f55,transparent 40%),var(--bg);background-attachment:fixed;color:var(--t);font:16px/1.4 system-ui,sans-serif;min-height:100vh}
+#app{max-width:560px;margin:auto;padding:0 14px 96px}
+header{display:flex;align-items:center;gap:12px;padding:14px 0;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
 header>div:nth-child(2){flex:1;line-height:1.2}
-.av{width:46px;height:46px;border-radius:16px;background:linear-gradient(145deg,#7185ff,#a05cff 65%,#e46ac5);display:flex;align-items:center;justify-content:center;font-weight:850;box-shadow:0 7px 24px #785cff55;border:1px solid #ffffff35}
-.bal{background:#132b2a;border:1px solid #36d6a044;padding:9px 14px;border-radius:99px;font-weight:800;color:#63edbd;white-space:nowrap}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:7px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#0a1020eF;backdrop-filter:blur(22px);border-top:1px solid #ffffff18;z-index:9}
-nav button{flex:1;max-width:132px;background:transparent;color:var(--m);border:1px solid transparent;border-radius:16px;padding:7px 0;font-size:11px;font-weight:700}
+.av{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-weight:800}
+.bal{background:#ffffff14;border:1px solid #ffffff1f;padding:8px 14px;border-radius:99px;font-weight:700;color:var(--g)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:4px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:#0e1020ee;backdrop-filter:blur(16px);border-top:1px solid #ffffff14;z-index:9}
+nav button{flex:1;max-width:110px;background:none;color:var(--m);border-radius:14px;padding:6px 0;font-size:11px;font-weight:600}
 nav button i{display:block;font-style:normal;font-size:22px}
-nav button.on{color:#fff;background:linear-gradient(135deg,#6d7cff35,#a05cff30);border-color:#9b8cff45}
- .card{background:linear-gradient(145deg,#172238eF,#101827f2);border:1px solid #ffffff17;border-radius:22px;padding:18px;margin:14px 0;box-shadow:0 12px 34px #0002;backdrop-filter:blur(12px)}
+nav button.on{color:#fff;background:#ffffff1a}
+.card{background:linear-gradient(180deg,#ffffff0e,#ffffff06);border:1px solid #ffffff14;border-radius:20px;padding:16px;margin:12px 0}
 h2,h3,h4{margin:0 0 10px}
-button{background:linear-gradient(135deg,#687dff,#985eff);color:#fff;border:1px solid #ffffff1a;border-radius:15px;padding:12px 17px;font:inherit;font-weight:750;cursor:pointer;transition:transform .12s,filter .12s;box-shadow:0 5px 16px #536aff24}button:hover{filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
-button:active{transform:scale(.97)}button.s{background:#ffffff0d;border:1px solid #ffffff20;box-shadow:none;color:#e6eaff}button.g{background:linear-gradient(135deg,#28c994,#16a6a5);color:#05251e}button.r{background:linear-gradient(135deg,#f05c75,#cf3e68)}
-input,select,textarea{width:100%;padding:13px 14px;border-radius:14px;border:1px solid #ffffff20;background:#0a1220;color:var(--t);font:inherit;margin:6px 0;outline:0}input:focus,select:focus,textarea:focus{border-color:#8792ff;box-shadow:0 0 0 3px #7c83ff20}
+button{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border:0;border-radius:14px;padding:12px 16px;font:inherit;font-weight:600;cursor:pointer;transition:transform .1s}
+button:active{transform:scale(.96)}button.s{background:#ffffff1a}button.g{background:linear-gradient(135deg,#2ee59d,#0fa3b1);color:#042}button.r{background:var(--r)}
+input{width:100%;padding:12px 14px;border-radius:14px;border:1px solid #ffffff1f;background:#ffffff0d;color:var(--t);font:inherit;margin:5px 0;outline:0}
 input:focus{border-color:var(--a)}
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .m{color:var(--m);font-size:14px}.err{color:var(--r)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
- .gc{border-radius:24px;padding:20px 12px;text-align:center;color:#fff;cursor:pointer;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:5px;box-shadow:0 12px 30px #0005;border:1px solid #ffffff40;position:relative;overflow:hidden;transition:transform .16s,filter .16s}.gc:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ffffff25,transparent 52%);pointer-events:none}.gc>*{position:relative}.gc:hover{filter:brightness(1.08);transform:translateY(-2px)}
-.gc b{font-size:46px;filter:drop-shadow(0 4px 8px #0004)}.gc span{font-weight:700}.gc small{opacity:.85;font-size:12px}.gc:active{transform:scale(.96)}
+.gc{border-radius:22px;padding:18px 10px;text-align:center;color:#fff;cursor:pointer;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:4px;box-shadow:0 8px 24px #0006}
+.gc b{font-size:42px}.gc span{font-weight:700}.gc small{opacity:.85;font-size:12px}.gc:active{transform:scale(.96)}
 .b4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#ffffff0d;padding:7px;border-radius:16px;touch-action:none}
 .t{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#ffffff10;font-weight:800;font-size:22px}
 .b3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:300px;margin:auto}
@@ -40,35 +40,31 @@ canvas{width:100%;max-width:340px;display:block;margin:auto;background:#ffffff0a
 .pc.w{background:radial-gradient(circle at 30% 30%,#fff,#aab)}.pc.b{background:radial-gradient(circle at 30% 30%,#666,#111)}
 .dp{display:grid;grid-template-columns:repeat(3,76px);gap:8px;justify-content:center;margin-top:14px}.dp button{height:62px;font-size:26px;padding:0}
 canvas,.pp{touch-action:none}.card{animation:in .3s}@keyframes in{from{opacity:0;transform:translateY(8px)}}
-header{background:linear-gradient(#090f1feF,#090f1f99,transparent);margin:0 -16px;padding-left:16px;padding-right:16px}h2{font-size:24px;letter-spacing:-.5px}h3{font-size:18px} .m{color:#a3aec7}.announce{box-shadow:0 10px 28px #0003} @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}#app{padding-left:22px;padding-right:22px}}
-.announce{border:1px solid #ffd16666;background:linear-gradient(135deg,#ffd16618,#ff8a5c12);border-radius:16px;padding:12px 14px;margin:10px 0 14px}
-.announce b{color:#ffd166}
-.durak-screen{position:fixed;inset:0;z-index:20;background:radial-gradient(ellipse at center,#176447 0%,#0b382c 65%,#071f1a 100%);padding:env(safe-area-inset-top) 10px env(safe-area-inset-bottom);overflow:auto;display:flex;flex-direction:column}
-.durak-screen .durak-head{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#fff;padding:6px 2px}
-.durak-screen .durak-table{flex:1;min-height:180px;border:8px solid #70452d;border-radius:28px;background:radial-gradient(ellipse,#16704e,#0c4b37);box-shadow:inset 0 0 25px #001b12,0 10px 30px #0008;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
-.durak-screen .tbl{background:#062e2344;border:1px solid #ffffff22;min-height:120px;justify-content:center;align-content:center;gap:10px}
-.durak-screen .hand{justify-content:center;align-items:flex-end;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;padding:10px 3px 14px;min-height:112px}
-.durak-screen .cd{width:clamp(42px,10vw,68px);height:clamp(64px,15vw,100px);min-width:clamp(42px,10vw,68px);aspect-ratio:5/7;border:1px solid #d8d8d8;border-radius:9px;background:linear-gradient(145deg,#fff,#f0eee8);color:#17202a;padding:5px 3px;margin:0;font-size:clamp(13px,3vw,18px);box-shadow:0 4px 9px #001a12aa;display:flex;flex-direction:column;justify-content:space-between;align-items:center;line-height:1.05}
-.durak-screen .cd .suit{font-size:clamp(17px,4vw,25px);line-height:1}
-.durak-screen .cd.rd{color:#d9273e}
-.durak-screen .cd.face{background:linear-gradient(145deg,#fff8df,#e9d6a2);border:2px solid #c39b4b}
-.durak-screen .cd.selcard{transform:translateY(-9px);outline:3px solid #ffd166}
-.durak-screen .pr{align-items:center}
-.durak-screen .pr .cd+.cd{margin-top:0;margin-left:-22px}
-.durak-screen .durak-actions{display:flex;gap:8px;justify-content:center;padding:7px 0}
-.durak-screen .durak-actions button{min-width:110px}
-.durak-screen .durak-players{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:8px 0}
-.durak-screen .durak-player{background:#ffffff20;border:1px solid #ffffff30;border-radius:20px;padding:5px 10px;color:#fff;font-size:12px}
-.durak-screen .durak-player.me{border-color:#ffd166;color:#ffd166}
-.durak-screen .durak-status{color:#fff;text-align:center;font-weight:700;padding:8px}
-.durak-screen .durak-back{background:#ffffff22;border:1px solid #ffffff33}
-@media(min-width:700px){.durak-screen{padding-left:max(24px,calc((100vw - 1100px)/2));padding-right:max(24px,calc((100vw - 1100px)/2))}.durak-screen .hand{min-height:130px}}
+header{background:linear-gradient(#0b0d17cc,transparent);margin:0 -14px;padding-left:14px;padding-right:14px}
 .cd{background:#fff;color:#111;padding:9px 5px;min-width:44px;font-weight:800;border-radius:9px;margin:2px;font-size:15px}.cd.rd{color:#e5484d}.tbl{display:flex;flex-wrap:wrap;gap:8px;min-height:80px;padding:10px;background:#ffffff0a;border-radius:14px;margin:8px 0}.pr{display:flex;flex-direction:column}.pr .cd+.cd{margin-top:-20px;margin-left:14px;box-shadow:0 0 0 2px #7c6cff}.hand{display:flex;flex-wrap:wrap;margin-top:10px}.sel2{outline:2px solid #ffd166;border-radius:10px}
+.pk{width:62px;height:90px;background:#fff;border-radius:9px;position:relative;color:#16171d;box-shadow:0 3px 8px #0007;flex:none;font-weight:800;cursor:pointer;user-select:none}.pk.rd{color:#d62839}
+.pk .rn{position:absolute;left:5px;top:4px;font-size:14px;line-height:1.05;text-align:center}.pk .r2{left:auto;top:auto;right:5px;bottom:4px;transform:rotate(180deg)}.pk .ct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px}
+.dfs{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;background:radial-gradient(ellipse at center,#1d7a4d,#0a2f1f 75%);padding-top:env(safe-area-inset-top,0px)}
+.dtop{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;color:#fff;font-weight:700}.dtop button{padding:6px 14px}
+.opp{display:flex;gap:8px;overflow-x:auto;padding:0 12px}.op{flex:none;background:#00000055;border-radius:14px;padding:6px 12px;text-align:center;color:#fff;border:2px solid transparent;display:flex;flex-direction:column;align-items:center}.op.at{border-color:#ffd166}.op.df{border-color:#6cc4ff}
+.av2{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-weight:800}
+.felt{flex:1;margin:10px 12px;border-radius:60px;border:7px solid #5b3a1e;background:radial-gradient(ellipse,#2fa468,#14613b);box-shadow:inset 0 0 40px #000a,0 6px 20px #0008;display:flex;align-items:center;justify-content:center;overflow:auto}
+.tbl2{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:14px}.pr{position:relative;width:62px;height:90px;flex:none}.pr .pk+.pk{position:absolute;left:16px;top:20px;box-shadow:0 0 0 2px #7c6cff,0 3px 8px #0007}.sel2 .pk{outline:3px solid #ffd166}
+.st{text-align:center;color:#fff;font-weight:700;margin:0 12px;min-height:22px}.acts{display:flex;gap:8px;justify-content:center;padding:8px;min-height:60px}
+.hand2{display:flex;gap:8px;overflow-x:auto;padding:16px 14px calc(16px + env(safe-area-inset-bottom,0px));background:#0006}.hand2 .pk{width:66px;height:96px}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1{font-size:32px;margin:12px 0 4px;background:linear-gradient(135deg,#fff,#b9a8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{text-align:center;padding:48px 0 6px}.logo{width:88px;height:88px;margin:auto;border-radius:28px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-size:46px;box-shadow:0 14px 44px #7c6cff88}
+.gc{position:relative;overflow:hidden;box-shadow:0 10px 30px #0007,inset 0 1px 0 #ffffff55}.gc::after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:#ffffff22;right:-34px;top:-44px}.gc b{filter:drop-shadow(0 4px 6px #0006)}
+nav button{position:relative;transition:.2s}nav button.on{background:linear-gradient(180deg,#7c6cff55,#ff6cc333)}
+.bdg{position:absolute;top:0;right:16%;background:var(--r);color:#fff;font-size:10px;font-style:normal;border-radius:99px;padding:1px 6px}.bdg:empty{display:none}
+.card{box-shadow:0 6px 22px #0004}.bal{box-shadow:0 0 18px #2ee59d44}
+button.g,button.r{box-shadow:0 4px 14px #0004}button:disabled{opacity:.4}
 </style></head><body><div id="app"></div>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 const CFG={apiKey:"AIzaSyD8WpXPYwLhywGX1GcW4xPhA7nfR_Rh6xY",authDomain:"games-club-70b7c.firebaseapp.com",projectId:"games-club-70b7c",storageBucket:"games-club-70b7c.firebasestorage.app",messagingSenderId:"789798637529",appId:"1:789798637529:web:ac36695a545ad208b9d3c8"};
-const ADM='mavlonazarov',AH='70f279317a2d1a840e38d8d33367f2191a0ded72672d3f82226f0ac57b81d6c5';
+var pend=0;const ADM='mavlonazarov',AH='70f279317a2d1a840e38d8d33367f2191a0ded72672d3f82226f0ac57b81d6c5';
 const $=s=>document.querySelector(s),A=$('#app');
 let db,me=null,U=null,tab='games',stop=null,unU=null,note='';
 const H=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
@@ -81,56 +77,36 @@ async function init(){
  try{firebase.initializeApp(CFG);db=firebase.firestore()}catch(e){console.error(e)}
  if(!db){A.innerHTML='<div class="card">Не удалось подключиться к базе данных. Проверь интернет.</div>';return}
  const s=LS.g();if(s)await login(s.l,s.p,true);else authView()}
-function authView(msg){cleanup();A.innerHTML=`<div class="card"><h2>🎮 Игровой клуб</h2><p class="m">Регистрация: сразу 500 монет для ставок</p>
+function authView(msg){cleanup();A.innerHTML=`<div class="hero"><div class="logo">🎮</div><h1>Игровой клуб</h1><p class="m">Играй с друзьями и делай ставки</p></div><div class="card"><p class="m">Новым игрокам 500 монет после подтверждения админом</p>
 <input id="l" placeholder="Логин (латиница/цифры)" autocapitalize="off"><input id="p" type="password" placeholder="Пароль">
 <p class="err">${msg||''}</p><div class="row"><button id="in">Войти</button><button class="s" id="rg">Регистрация</button></div></div>`;
  $('#in').onclick=()=>login($('#l').value.trim().toLowerCase(),$('#p').value);
  $('#rg').onclick=reg}
 async function reg(){const l=$('#l').value.trim().toLowerCase(),p=$('#p').value;
  if(!/^[a-z0-9_]{3,16}$/.test(l)||p.length<4||l===ADM)return authView('Логин 3–16 символов (a-z, 0-9, _), пароль от 4');
- const existing=await ud(l).get();
- if(existing.exists&&existing.data().status!=='rejected')return authView('Такой логин занят');
- await ud(l).set({pw:await H(l+':'+p),bal:500,loan:0,due:0,blocked:false,approved:false,status:'pending',ts:Date.now()});
- authView('Заявка отправлена. Дождись подтверждения администратора, после этого сможешь войти.')}
+ if((await ud(l).get()).exists)return authView('Такой логин занят');
+ await ud(l).set({pw:await H(l+':'+p),bal:500,loan:0,due:0,blocked:false,approved:false,ts:Date.now()});
+ authView('✅ Заявка отправлена. Дождись подтверждения админа, потом войди.')}
 async function login(l,p,auto){
  const h=await H(l+':'+p);let s=await ud(l).get();
  if(l===ADM){if(h!==(s.exists?s.data().pw:AH))return authView('Неверный логин или пароль');
   if(!s.exists)await ud(l).set({pw:h,bal:0,loan:0,due:0,blocked:false,ts:Date.now(),admin:true})}
  else if(!s.exists||s.data().pw!==h){LS.s(null);return authView('Неверный логин или пароль')}
- else if(s.data().approved===false||s.data().status==='pending'){LS.s(null);return authView('Аккаунт ещё ожидает подтверждения администратора.')}
- else if(s.data().status==='rejected'){LS.s(null);return authView('Заявка отклонена. Обратись к администратору.')}
- me=l;LS.s({l,p});tab='games';
- if(l===ADM)startAdminNotifications();
- unU=ud(l).onSnapshot(x=>{U=x.data();checkDue();if(!stop||tab!=='play')render()});}
-let stopPending=null,pendingSeen=null;
-function adminToast(login){
- let t=document.getElementById('adminToast');
- if(!t){t=document.createElement('div');t.id='adminToast';t.style.cssText='position:fixed;z-index:1000;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;max-width:520px;margin:auto;padding:14px 16px;border-radius:16px;background:#182641;border:1px solid #8b9cff88;color:#fff;box-shadow:0 12px 35px #0009;font-weight:700';document.body.appendChild(t)}
- t.textContent='🔔 Новая заявка на регистрацию: '+login+' · открой раздел «Админ»';
- if('Notification' in window&&Notification.permission==='granted'){try{new Notification('Новая регистрация',{body:'Игрок '+login+' ожидает подтверждения'})}catch(e){}}
- clearTimeout(t._timer);t._timer=setTimeout(()=>t.remove(),6500);
-}
-function startAdminNotifications(){
- if(stopPending)stopPending();
- pendingSeen=null;
- stopPending=db.collection('users').onSnapshot(s=>{
-  const now=new Set(s.docs.filter(d=>d.data().approved===false||d.data().status==='pending').map(d=>d.id));
-  if(pendingSeen!==null)now.forEach(l=>{if(!pendingSeen.has(l))adminToast(l)});
-  pendingSeen=now;
- });
-}
+ if(l!==ADM&&s.data().approved===false){LS.s(null);return authView('Аккаунт ждёт подтверждения админа')}
+ me=l;LS.s({l,p});tab='games';if(l===ADM)db.collection('users').onSnapshot(q=>{pend=q.docs.filter(d=>d.data().approved===false).length;const b=$('#pb');if(b)b.textContent=pend||''});
+ unU=ud(l).onSnapshot(x=>{if(!x.exists){LS.s(null);unU&&unU();me=U=null;return authView('Аккаунт удалён')}U=x.data();checkDue();if(!stop||tab!=='play')render()});}
 async function checkDue(){if(U&&U.loan>0&&!U.blocked&&Date.now()>U.due){U.blocked=true;
  await ud(me).update({blocked:true});await db.doc('alerts/'+me).set({login:me,amt:U.loan,ts:Date.now()})}}
 const NAV=[['games','🎮','Игры'],['top','🏆','Топ'],['chat','💬','Чат'],['profile','👤','Профиль']];
 function shell(inner){const nv=(me===ADM?NAV.filter(n=>n[0]!='profile'):NAV).concat(me===ADM?[['admin','🛠','Админ']]:[]);
- A.innerHTML=`<header><div class="av">${me[0].toUpperCase()}</div><div><b>${me}</b><div class="m">Игровой клуб</div></div><div class="bal">💰 ${U.bal}</div></header><main id="v">${inner}</main><nav>${nv.map(n=>`<button data-t="${n[0]}" class="${tab==n[0]||(tab=='play'&&n[0]=='games')?'on':''}"><i>${n[1]}</i>${n[2]}</button>`).join('')}</nav>`;
+ A.innerHTML=`<header><div class="av">${me[0].toUpperCase()}</div><div><b>${me}</b><div class="m">Игровой клуб</div></div><div class="bal">💰 ${U.bal}</div></header><main id="v">${inner}</main><nav>${nv.map(n=>`<button data-t="${n[0]}" class="${tab==n[0]||(tab=='play'&&n[0]=='games')?'on':''}"><i>${n[1]}</i>${n[2]}${n[0]=='admin'?`<em id="pb" class="bdg">${pend||''}</em>`:''}</button>`).join('')}</nav>`;
  A.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{cleanup();tab=b.dataset.t;render()})}
 const GAMES=[['Крестики-нолики','❌','Онлайн · ставки','#ff6cc3','#7c6cff',ttt],['Шашки','⚫','Онлайн · ставки','#ffb86c','#ff5d73',checkers],['Дурак','🃏','Онлайн · 2–8 игроков','#f7971e','#ffd200',durak],['2048','🔢','Одиночная','#2ee59d','#0fa3b1',g2048],['Змейка','🐍','Одиночная','#7cf29a','#1fb26b',snake],['Блок Бласт','🧱','Одиночная','#6cc4ff','#7c6cff',blast],['Кликер','👆','10 секунд','#ffd166','#ff8a5c',clicker],['Викторина','❓','Для всех','#c471f5','#fa71cd',quiz]];
 function render(){if(!U)return;cleanup();
- if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return leaders();if(tab=='chat')return chat();if(tab=='play')return;
- shell(`<div id="globalAnnouncement"></div><div class="top" style="margin:18px 0 12px"><div><div class="m">ТВОЯ ПЛОЩАДКА</div><h2 style="margin:2px 0">Выбери игру</h2></div><span class="m">${GAMES.length} игр</span></div><div class="grid">${GAMES.map((g,i)=>`<div class="gc" data-i="${i}" style="background:linear-gradient(135deg,${g[3]},${g[4]})"><b>${g[1]}</b><span>${g[0]}</span><small>${g[2]}</small></div>`).join('')}</div>`);
- db.doc('settings/global').get().then(d=>{const box=$('#globalAnnouncement');if(box&&d.exists&&d.data().announcement)box.innerHTML=`<div class="announce"><b>📢 Объявление для всех</b><div>${esc(d.data().announcement)}</div></div>`});
- A.querySelectorAll('[data-i]').forEach(c=>c.onclick=()=>{tab='play';shell('<button class="s" id="bk" style="margin-bottom:6px">← Назад</button><div id="g"></div>');$('#bk').onclick=()=>{cleanup();tab='games';render()};GAMES[c.dataset.i][5]($('#g'))})}
+ if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return leaders();if(tab=='chat')return chat(window.cp);if(tab=='play')return;
+ shell(`<div id="ann"></div><h2>Выбери игру</h2><div class="grid">${GAMES.map((g,i)=>`<div class="gc" data-i="${i}" style="background:linear-gradient(135deg,${g[3]},${g[4]})"><b>${g[1]}</b><span>${g[0]}</span><small>${g[2]}</small></div>`).join('')}</div>`);
+ stop=db.doc('meta/ann').onSnapshot(x=>{const e=$('#ann');if(e)e.innerHTML=x.exists&&x.data().t?`<div class="card" style="border-color:#ffd16666">📢 ${esc(x.data().t)}</div>`:''});
+ A.querySelectorAll('[data-i]').forEach(c=>c.onclick=()=>{cleanup();tab='play';shell('<button class="s" id="bk" style="margin-bottom:6px">← Назад</button><div id="g"></div>');$('#bk').onclick=()=>{cleanup();tab='games';render()};GAMES[c.dataset.i][5]($('#g'))})}
 function profile(){const left=U.loan?Math.max(0,U.due-Date.now()):0,hrs=Math.ceil(left/36e5);
  shell(`<div class="card"><h3>Баланс: ${U.bal} 💰</h3>${U.loan?`<p>Долг: <b>${U.loan}</b>. Осталось ~${hrs} ч.</p><button class="g" id="rp">Вернуть кредит</button>`:
  U.blocked?'<p class="err">Кредит заблокирован. Админ уведомлён.</p>':`<p class="m">Кредит до 1000 монет на 1 день. Не вернёшь — больше не дадим.</p><input id="la" type="number" min="1" max="1000" placeholder="Сколько взять (1–1000)"><button id="ln" style="width:100%;margin-top:6px">Взять кредит</button>`}
@@ -138,19 +114,16 @@ function profile(){const left=U.loan?Math.max(0,U.due-Date.now()):0,hrs=Math.cei
  const ln=$('#ln');if(ln)ln.onclick=()=>{const a=+$('#la').value|0;if(a<1||a>1000){note='Сумма от 1 до 1000';return render()}note='';ud(me).update({bal:U.bal+a,loan:a,due:Date.now()+864e5})};
  const rp=$('#rp');if(rp)rp.onclick=async()=>{if(U.bal<U.loan){note='Не хватает монет';return render()}note='';await ud(me).update({bal:U.bal-U.loan,loan:0,due:0,blocked:false});await db.doc('alerts/'+me).delete().catch(()=>{})};
  $('#tx').onclick=async()=>{const l=$('#tl').value.trim().toLowerCase(),a=+$('#ta').value|0;if(!l||l===me||a<1||a>U.bal||!(await ud(l).get()).exists){note='Проверь ник и сумму';return render()}await ud(l).update({bal:firebase.firestore.FieldValue.increment(a)});await ud(me).update({bal:U.bal-a});note='Отправлено '+a+' → '+l;render()};
- $('#lo').onclick=()=>{LS.s(null);unU&&unU();if(stopPending){stopPending();stopPending=null}me=U=null;authView()}}
+ $('#lo').onclick=()=>{LS.s(null);unU&&unU();me=U=null;authView()}}
 function admin(){window._al=[];window._d=null;shell('<p class="m">Загрузка…</p>');let u1=db.collection('users').onSnapshot(us=>{const draw=()=>{if(tab!=='admin')return;const al=window._al||[];
- const pending=us.docs.filter(d=>d.id!==ADM&&(d.data().approved===false||d.data().status==='pending'));
- const L=us.docs.filter(d=>d.id!==ADM&&d.data().approved!==false&&d.data().status!=='pending'&&d.data().status!=='rejected');$('#v').innerHTML=`<div class="card"><div class="top"><h3>🔔 Заявки на регистрацию</h3><b style="color:var(--g)">${pending.length}</b></div><p class="m">Новые игроки не смогут войти, пока ты не подтвердишь их аккаунт.</p><button class="s" id="notif">Включить уведомления браузера</button>${pending.map(d=>`<div class="row" style="padding:10px 0;border-top:1px solid #ffffff18"><div><b>${esc(d.id)}</b><div class="m">Заявка · ${new Date(d.data().ts||Date.now()).toLocaleString()}</div></div><button class="g" data-approve="${esc(d.id)}">Подтвердить</button><button class="r" data-reject="${esc(d.id)}">Отклонить</button></div>`).join('')||'<p class="m">Новых заявок нет</p>'}</div><div class="card"><h3>Зарегистрировано: ${L.length}</h3>
-<div class="row"><input id="am" type="number" placeholder="Сумма"><button class="g" id="tp">Пополнить баланс</button></div></div>
+ const L=us.docs.filter(d=>d.id!==ADM),PN=L.filter(d=>d.data().approved===false);$('#v').innerHTML=`<div class="card"><h3>Зарегистрировано: ${L.length-PN.length}</h3>
+<div class="row"><input id="am" type="number" placeholder="Сумма"><button class="g" id="tp">Пополнить баланс</button><button class="r" id="zr">Обнулить мой баланс</button></div></div>
 <div class="card"><h3>🔔 Должники (${al.length})</h3>${al.map(a=>`<p><b>${a.login}</b> не вернул ${a.amt}<br><button data-u="${a.login}">Разблокировать</button> <button class="r" data-k="${a.login}">Оставить</button></p>`).join('')||'<p class="m">Нет</p>'}</div>
-<div class="card"><h3>📢 Объявление на главном экране</h3><input id="ann" maxlength="240" placeholder="Текст объявления"><div class="row"><button id="as" class="g">Опубликовать</button><button id="ac" class="s">Убрать</button></div></div>
- <div class="card"><h3>💰 Мой баланс администратора</h3><p>Сейчас: <b>${U.bal}</b></p><button id="zero" class="r">Обнулить мой баланс</button></div>
- <div class="card"><h3>🔑 Сменить пароль</h3><input id="pl" placeholder="Логин (свой или участника)"><input id="pp" placeholder="Новый пароль"><button id="pw">Сменить</button></div><div class="card"><table><tr><th>Логин</th><th>Баланс</th><th>Долг</th></tr>${L.map(d=>{const x=d.data();return`<tr><td>${d.id}${x.blocked?' 🚫':''}</td><td>${x.bal}</td><td>${x.loan}</td></tr>`}).join('')}</table></div>`;
+<div class="card"><h3>🆕 Заявки на регистрацию (${PN.length})</h3>${PN.map(d=>`<div class="row" style="margin:6px 0"><b>${d.id}</b><button class="g" data-ok="${d.id}">Принять</button><button class="r" data-no="${d.id}">Отклонить</button></div>`).join('')||'<p class="m">Новых заявок нет</p>'}</div><div class="card"><h3>📢 Объявление на главной</h3><input id="an" placeholder="Текст объявления"><div class="row"><button id="ap">Опубликовать</button><button class="s" id="ac">Убрать</button></div></div><div class="card"><h3>🔑 Сменить пароль</h3><input id="pl" placeholder="Логин (свой или участника)"><input id="pp" placeholder="Новый пароль"><button id="pw">Сменить</button></div><div class="card"><table><tr><th>Логин</th><th>Баланс</th><th>Долг</th></tr>${L.map(d=>{const x=d.data();return`<tr><td>${d.id}${x.blocked?' 🚫':''}</td><td>${x.bal}</td><td>${x.loan}</td></tr>`}).join('')}</table></div>`;
  $('#tp').onclick=()=>{const n=+$('#am').value;if(n>0)addBal(n)};
- const nf=$('#notif');if(nf)nf.onclick=async()=>{if(!('Notification' in window)){nf.textContent='Браузер не поддерживает уведомления';return}const p=await Notification.requestPermission();nf.textContent=p==='granted'?'Уведомления включены ✓':'Разрешение не выдано'};
- A.querySelectorAll('[data-approve]').forEach(b=>b.onclick=async()=>{await ud(b.dataset.approve).update({approved:true,status:'approved',approvedAt:Date.now()});adminToast('Аккаунт '+b.dataset.approve+' подтверждён');});
- A.querySelectorAll('[data-reject]').forEach(b=>b.onclick=async()=>{if(confirm('Отклонить заявку '+b.dataset.reject+'?'))await ud(b.dataset.reject).update({approved:false,status:'rejected'});});
+ $('#ap').onclick=()=>{const t=$('#an').value.trim();if(t)db.doc('meta/ann').set({t,ts:Date.now()})};$('#ac').onclick=()=>db.doc('meta/ann').set({t:'',ts:Date.now()});
+ A.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>ud(b.dataset.ok).update({approved:true}));A.querySelectorAll('[data-no]').forEach(b=>b.onclick=()=>ud(b.dataset.no).delete());
+ $('#zr').onclick=()=>{const z=$('#zr');if(z.dataset.k)ud(me).update({bal:0});else{z.dataset.k=1;z.textContent='Точно? Нажми ещё раз'}};
  $('#pw').onclick=async()=>{const l=$('#pl').value.trim().toLowerCase(),p=$('#pp').value;if(p.length<4||!(await ud(l).get()).exists){$('#pw').textContent='Ошибка: логин или пароль';return}await ud(l).update({pw:await H(l+':'+p)});if(l===ADM)LS.s({l,p});$('#pw').textContent='Готово ✓'};
  A.querySelectorAll('[data-u]').forEach(b=>b.onclick=async()=>{await ud(b.dataset.u).update({blocked:false,due:Date.now()+864e5});db.doc('alerts/'+b.dataset.u).delete()});
  A.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>db.doc('alerts/'+b.dataset.k).delete())};
@@ -162,11 +135,16 @@ function rec(g,s){const r=U.rec||{};if(s>(r[g]||0))ud(me).update({rec:{...r,[g]:
 function leaders(){shell('<p class="m">Загрузка…</p>');stop=db.collection('users').onSnapshot(us=>{const v=$('#v');if(!v)return;
  v.innerHTML=['2048','Змейка','Блок Бласт','Кликер'].map(g=>{const L=us.docs.map(d=>[d.id,((d.data().rec||{})[g])||0]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10);
  return `<div class="card"><h3>🏆 ${g}</h3><table>${L.map((x,i)=>`<tr><td>${i+1} ${['🥇','🥈','🥉'][i]||''}</td><td>${x[0]}${x[0]==me?' (ты)':''}</td><td><b>${x[1]}</b></td></tr>`).join('')||'<tr><td class="m">Пока нет рекордов</td></tr>'}</table></div>`}).join('')})}
-function chat(){shell('<div class="card"><div id="ms" style="height:46vh;overflow:auto"></div></div><div class="row"><input id="ct" placeholder="Кому (пусто = всем)" maxlength="16" style="flex:0 0 38%"><input id="ci" maxlength="300" placeholder="Сообщение"><button id="cs" style="flex:0 0 auto">➤</button></div>');
- const send=async()=>{const t=$('#ci').value.trim(),to=$('#ct').value.trim().toLowerCase();if(!t)return;if(to&&!(await ud(to).get()).exists){$('#ct').value='';$('#ct').placeholder='Нет такого игрока';return}$('#ci').value='';db.doc('chat/'+Date.now()+'_'+me).set({u:me,to,t,ts:Date.now()})};
+function chat(peer){cleanup();window.cp=peer;
+ if(!peer){shell('<div class="card"><h3>💬 Чат</h3><input id="sq" placeholder="Найти игрока" autocapitalize="off"><div id="pl" style="margin-top:8px"></div></div>');let L=[];
+  const show=()=>{const q=$('#sq').value.trim().toLowerCase(),p=$('#pl');if(!p)return;p.innerHTML=L.filter(n=>n.includes(q)).map(n=>`<div class="row" data-n="${n}" style="padding:10px 4px;border-bottom:1px solid #ffffff12;cursor:pointer;flex-wrap:nowrap"><div class="av" style="flex:none;width:36px;height:36px;font-size:14px">${n[0].toUpperCase()}</div><b>${n}${n==ADM?' 👑':''}</b></div>`).join('')||'<span class="m">Никого нет</span>';p.querySelectorAll('[data-n]').forEach(d=>d.onclick=()=>chat(d.dataset.n))};
+  $('#sq').oninput=show;stop=db.collection('users').onSnapshot(s=>{L=s.docs.filter(d=>d.data().approved!==false).map(d=>d.id).filter(n=>n!=me).sort();show()});return}
+ shell(`<button class="s" id="bk2">← Все игроки</button><div class="card" style="margin-top:8px"><b>💬 ${peer}</b><div id="ms" style="height:44vh;overflow:auto;margin-top:8px"></div></div><div class="row"><input id="ci" maxlength="300" placeholder="Сообщение для ${peer}"><button id="cs" style="flex:0 0 auto">➤</button></div>`);
+ $('#bk2').onclick=()=>chat();
+ const send=()=>{const t=$('#ci').value.trim();if(!t)return;$('#ci').value='';db.doc('chat/'+Date.now()+'_'+me).set({u:me,to:peer,t,ts:Date.now()})};
  $('#cs').onclick=send;$('#ci').onkeydown=e=>{if(e.key=='Enter')send()};
- stop=db.collection('chat').onSnapshot(s=>{const L=s.docs.map(d=>d.data()).filter(x=>!x.to||x.to==me||x.u==me).sort((a,b)=>a.ts-b.ts).slice(-60),m=$('#ms');if(!m)return;
-  m.innerHTML=L.map(x=>`<p style="margin:5px 0"><b style="color:${x.u==me?'var(--a)':'var(--g)'}">${esc(x.u)}</b>${x.to?` <span class="err">🔒 → ${x.to==me?'тебе':esc(x.to)}</span>`:''} <span class="m">${new Date(x.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</span><br>${esc(x.t)}</p>`).join('')||'<span class="m">Пишите первыми</span>';m.scrollTop=m.scrollHeight})}
+ stop=db.collection('chat').onSnapshot(s=>{const L=s.docs.map(d=>d.data()).filter(x=>(x.u==me&&x.to==peer)||(x.u==peer&&x.to==me)).sort((a,b)=>a.ts-b.ts).slice(-80),m=$('#ms');if(!m)return;
+  m.innerHTML=L.map(x=>`<div style="display:flex;justify-content:${x.u==me?'flex-end':'flex-start'};margin:4px 0"><div style="max-width:78%;padding:8px 12px;border-radius:14px;background:${x.u==me?'linear-gradient(135deg,var(--a),var(--a2))':'#ffffff1a'}">${esc(x.t)}<div class="m" style="font-size:11px;text-align:right">${new Date(x.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</div></div></div>`).join('')||'<span class="m">Напиши первым</span>';m.scrollTop=m.scrollHeight})}
 /* ---------- ИГРЫ ---------- */
 function blast(el){const P=[[[1]],[[1,1]],[[1],[1]],[[1,1,1]],[[1],[1],[1]],[[1,1],[1,1]],[[1,1,1],[1,1,1],[1,1,1]],[[1,0],[1,0],[1,1]],[[1,1],[1,0]],[[1,1,1,1]],[[1,1],[0,1]]];
  let g=Array(64).fill(0),pc=[],sel=-1,sc=0;const np=()=>{pc=[0,1,2].map(()=>P[Math.random()*P.length|0])};np();
@@ -203,7 +181,7 @@ function checkers(el){let u1,u2,msg='',sel=-1,paid=false;stop=()=>{u1&&u1();u2&&
  function room(c){stop();paid=false;u2=db.doc('rk/'+c).onSnapshot(s=>{if(!s.exists)return lobby();const r=s.data();draw(c,r,r.w==me?'w':'b')})}
  function draw(c,r,m){const myT=r.turn==m&&r.b&&!r.win,bd=r.bd,caps=CAP(bd,m),tg={};
   if(myT&&sel>=0){const L=r.lock>=0&&sel!=r.lock?[]:(caps.length?(caps.includes(sel)?mv(bd,sel,m,1):[]):mv(bd,sel,m,0));L.forEach(x=>tg[x[0]]=x[1])}
-  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк ${r.bet*2} 💰</span></div><p>${r.w} ⚪ vs ${r.b||'ждём соперника…'} ⚫ · ты ${m=='w'?'белые':'чёрные'}</p><div class="ck">${[...Array(64).keys()].map(pos=>{const i=m=='b'?63-pos:pos,ch=bd[i],R=i/8|0,C=i%8;return`<div data-c="${i}" class="${(R+C)%2?'dk':'lt'}${sel==i?' sl':''}${i in tg?' tg':''}">${ch=='-'?'':`<span class="pc ${lo(ch)}">${ch==ch.toUpperCase()?'♛':''}</span>`}</div>`}).join('')}</div><p style="text-align:center"><b>${r.win?(r.win==m?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл'):!r.b?'':myT?'Твой ход'+(r.lock>=0?' (бей дальше)':''):'Ход соперника'}</b></p><button class="s" id="lv">${!r.b?'Отменить':'Выйти'}</button></div>`;
+  el.innerHTML=`<div class="card"><div class="top"><b>Комната ${c}</b><span>Банк ${r.bet*2} 💰</span></div><p>${r.w} ⚪ vs ${r.b||'ждём соперника…'} ⚫ · ты ${m=='w'?'белые':'чёрные'}</p><div class="ck">${(m=='b'?[...Array(64).keys()].reverse():[...Array(64).keys()]).map(i=>{const ch=bd[i],R=i/8|0,C=i%8;return`<div data-c="${i}" class="${(R+C)%2?'dk':'lt'}${sel==i?' sl':''}${i in tg?' tg':''}">${ch=='-'?'':`<span class="pc ${lo(ch)}">${ch==ch.toUpperCase()?'♛':''}</span>`}</div>`}).join('')}</div><p style="text-align:center"><b>${r.win?(r.win==m?'🏆 Ты выиграл '+r.bet*2:'Ты проиграл'):!r.b?'':myT?'Твой ход'+(r.lock>=0?' (бей дальше)':''):'Ход соперника'}</b></p><button class="s" id="lv">${!r.b?'Отменить':'Выйти'}</button></div>`;
   $('#lv').onclick=async()=>{if(!r.b&&!r.win){await addBal(r.bet);await db.doc('rk/'+c).delete()}lobby()};
   el.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const i=+d.dataset.c;if(!myT)return;
    if(bd[i]!='-'&&lo(bd[i])==m&&(r.lock<0||r.lock==i)){sel=i;return draw(c,r,m)}
@@ -235,21 +213,22 @@ function quiz(el){const isA=me===ADM;let cur=null,raw=[];
   d.querySelectorAll('[data-p2]').forEach(b=>b.onclick=async()=>{const u=b.dataset.p2,a=+d.querySelector('[data-s="'+u+'"]').value|0;if(a>0&&a<=U.bal){await ud(u).update({bal:firebase.firestore.FieldValue.increment(a)});await ud(me).update({bal:U.bal-a});b.textContent='✓'}})}}
 function durak(el){let u1,u2,msg='',paid=false,selT=-1,R=9;stop=()=>{u1&&u1();u2&&u2()};
  const N13=['2','3','4','5','6','7','8','9','10','В','Д','К','Т'],SU=['♠','♥','♦','♣'],rk=c=>c%R,su=c=>c/R|0,nm=c=>N13[rk(c)+(R==9?4:0)]+SU[su(c)];
- const card=(c,x)=>{const rank=N13[rk(c)+(R==9?4:0)],suit=SU[su(c)],red=su(c)==1||su(c)==2,face=['В','Д','К','Т'].includes(rank);const art={В:'🛡️',Д:'👑',К:'♛',Т:'⭐'}[rank]||'';return`<button class="cd ${red?'rd':''} ${face?'face':''} ${x&&x.includes('data-h')&&selT===c?'selcard':''}" ${x||''}><span>${rank}</span><span class="suit">${suit}</span>${face?`<span>${art}</span>`:`<span>${suit}</span>`}</button>`};
+ const FC={9:'🤴',10:'👸',11:'👑'};
+ const card=(c,x)=>{const k=rk(c)+(R==9?4:0),s=SU[su(c)],lb=`${N13[k]}<br>${s}`;return`<div class="pk ${su(c)==1||su(c)==2?'rd':''}" ${x||''}><b class="rn">${lb}</b><span class="ct">${FC[k]||s}</span><b class="rn r2">${lb}</b></div>`};
  const cl=o=>JSON.parse(JSON.stringify(o));
  const nxt=(r,i)=>{for(let k=1;k<=r.p.length;k++){const j=(i+k)%r.p.length;if(!r.out.includes(r.p[j]))return j}return i};
  function refill(r,h,dk){const n=r.p.length,o=[];for(let k=0;k<n;k++){const j=(r.at+k)%n;if(j!=r.df)o.push(r.p[j])}o.push(r.p[r.df]);o.forEach(x=>{while(h[x].length<6&&dk.length)h[x].push(dk.shift())})}
- function settle(c,r,h,dk,at){const out=[...r.out];r.p.forEach(n=>{if(!out.includes(n)&&!h[n].length&&!dk.length)out.push(n)});const o2={...r,out},alive=r.p.filter(n=>!out.includes(n)),u={hands:h,deck:dk,table:[],out};
+ function settle(c,r,h,dk,at){const out=[...r.out];r.p.forEach(n=>{if(!out.includes(n)&&!h[n].length&&!dk.length)out.push(n)});const o2={...r,out},alive=r.p.filter(n=>!out.includes(n)),u={hands:h,deck:dk,table:[],out,tk:false};
   if(alive.length<2){u.st='end';u.loser=alive[0]||''}else{if(out.includes(r.p[at]))at=nxt(o2,at);u.at=at;u.df=nxt(o2,at)}
   db.doc('rd/'+c).update(u)}
  const bito=(c,r)=>{const h=cl(r.hands),dk=[...r.deck];refill(r,h,dk);settle(c,r,h,dk,r.df)};
- const take=(c,r)=>{db.doc('rd/'+c).update({taking:true})};
-  const confirmTake=(c,r)=>{const h=cl(r.hands),dk=[...r.deck],d=r.p[r.df];(r.table||[]).forEach(x=>{h[d].push(x.a);if(x.d>=0)h[d].push(x.d)});refill(r,h,dk);settle(c,r,h,dk,nxt(r,r.df));db.doc('rd/'+c).update({taking:false})};
+ const take=(c,r)=>db.doc('rd/'+c).update({tk:true});
+ const takeFin=(c,r)=>{const h=cl(r.hands),dk=[...r.deck],d=r.p[r.df];(r.table||[]).forEach(x=>{h[d].push(x.a);if(x.d>=0)h[d].push(x.d)});refill(r,h,dk);settle(c,r,h,dk,nxt(r,r.df))};
  function play(c,r,k){if(r.st!='play'||r.out.includes(me))return;const t=cl(r.table||[]),h=cl(r.hands),def=r.p[r.df];if(!h[me].includes(k))return;
-  if(me==def){const i=selT>=0&&t[selT]&&t[selT].d<0?selT:t.findIndex(x=>x.d<0);if(i<0)return;const a=t[i].a;
+  if(me==def){if(r.tk)return;const i=selT>=0&&t[selT]&&t[selT].d<0?selT:t.findIndex(x=>x.d<0);if(i<0)return;const a=t[i].a;
    if(!((su(k)==su(a)&&rk(k)>rk(a))||(su(k)==r.trump&&su(a)!=r.trump)))return;t[i].d=k}
   else{const rs=t.flatMap(x=>x.d>=0?[rk(x.a),rk(x.d)]:[rk(x.a)]),und=t.filter(x=>x.d<0).length;
-   if(t.length?!rs.includes(rk(k)):me!=r.p[r.at])return;if(t.length>=6||t.filter(x=>x.d<0).length>=h[def].length)return;t.push({a:k,d:-1})}
+   if(t.length?!rs.includes(rk(k)):me!=r.p[r.at])return;if(t.length>=6||und>=h[def].length)return;t.push({a:k,d:-1})}
   h[me].splice(h[me].indexOf(k),1);selT=-1;db.doc('rd/'+c).update({hands:h,table:t})}
  function lobby(){stop();el.innerHTML=`<div class="card"><h3>🃏 Дурак онлайн (2–8)</h3><input id="bt" type="number" value="100" min="100" placeholder="Ставка"><button id="cr" style="width:100%;margin-top:6px">Создать стол</button><p class="err">${msg}</p></div><div class="card"><h4>Открытые столы</h4><div id="ls" class="m">…</div></div>`;
   $('#cr').onclick=async()=>{const bet=+$('#bt').value|0;if(bet<100||bet>U.bal){msg='Ставка от 100 и не больше баланса';return lobby()}msg='';const c=String(Math.random()*9000+1000|0);await addBal(-bet);await db.doc('rd/'+c).set({host:me,bet,st:'wait',p:[me],ts:Date.now()});room(c)};
@@ -261,19 +240,19 @@ function durak(el){let u1,u2,msg='',paid=false,selT=-1,R=9;stop=()=>{u1&&u1();u2
  function draw(c,r){R=r.R||9;
   if(r.st=='wait'){el.innerHTML=`<div class="card"><div class="top"><b>Стол ${c}</b><span>Ставка ${r.bet}</span></div><p>Игроки (${r.p.length}/8): ${r.p.join(', ')}</p>${r.host==me?`<button id="go" style="width:100%" ${r.p.length<2?'disabled':''}>Начать игру</button>`:'<p class="m">Ждём, пока хост начнёт…</p>'}<button class="s" id="lv" style="margin-top:8px;width:100%">Выйти</button></div>`;
    const go=$('#go');if(go)go.onclick=()=>{const n=r.p.length,RR=n>6?13:9,d=[...Array(4*RR).keys()].sort(()=>Math.random()-.5),h={};r.p.forEach(x=>{h[x]=d.splice(0,6)});
-    db.doc('rd/'+c).update({st:'play',R:RR,hands:h,deck:d,trump:Math.floor(d[d.length-1]/RR),table:[],at:0,df:1,out:[],loser:''})};
+    db.doc('rd/'+c).update({st:'play',R:RR,hands:h,deck:d,trump:Math.floor(d[d.length-1]/RR),table:[],at:0,df:1,out:[],loser:'',tk:false})};
    $('#lv').onclick=async()=>{if(r.host!=me&&r.p.includes(me)){await addBal(r.bet);await db.doc('rd/'+c).update({p:r.p.filter(x=>x!=me)})}else if(r.host==me&&r.p.length==1){await addBal(r.bet);await db.doc('rd/'+c).delete()}lobby()};return}
   const t=r.table||[],att=r.p[r.at],def=r.p[r.df],hand=[...(r.hands[me]||[])].sort((a,b)=>a-b),isDef=me==def,und=t.filter(x=>x.d<0).length,alive=!r.out.includes(me),n=r.p.length;
-  let st=r.st=='end'?(r.loser?`🃏 Дурак: <b>${r.loser}</b>`+(r.loser==me?'. Ты проиграл ставку':'. Ты выиграл +'+Math.floor(r.bet/(n-1))):'Ничья, ставки возвращены'):!alive?'Ты вышел из игры 🎉 ждёшь итогов':isDef?(und?'Ты отбиваешься: тапни карту (или «Беру»)':'Все отбито, ждём «Бито»'):me==att&&!t.length?'Твой ход: атакуй любой картой':und?'Защитник отбивается, можно подкинуть':t.length?'Подкидывай той же масти значения или жми «Бито»':'Ждём атаку';
-  el.innerHTML=`<div class="card"><div class="top"><b>Стол ${c} · банк ${r.bet*n}</b><span>Козырь ${SU[r.trump]} · колода ${r.deck.length}</span></div>
-  <div class="row" style="gap:6px">${r.p.map(x=>`<div style="flex:none;background:#ffffff14;border-radius:10px;padding:4px 8px;font-size:13px;${x==me?'outline:1px solid var(--a)':''}">${r.st=='play'&&x==att?'⚔️':r.st=='play'&&x==def?'🛡️':''}${x} · ${r.out.includes(x)?'вышел':(r.hands[x]||[]).length}</div>`).join('')}</div>
-  <div class="tbl">${t.map((x,i)=>`<div class="pr ${selT==i?'sel2':''}" data-t="${i}">${card(x.a)}${x.d>=0?card(x.d):''}</div>`).join('')||'<span class="m">Стол пуст</span>'}</div>
-  <p style="text-align:center"><b>${st}</b></p>
-  ${r.st=='play'&&alive?`<div class="row">${isDef&&und?'<button id="tk" class="r">Беру</button>':''}${!isDef&&t.length&&!und?'<button id="bt2" class="g">Бито</button>':''}</div><div class="hand">${hand.map(k=>card(k,`data-h="${k}"`)).join('')}</div>`:''}
-  <button class="s" id="lv" style="margin-top:10px;width:100%">Выйти</button></div>`;
+  let st=r.st=='end'?(r.loser?`🃏 Дурак: <b>${r.loser}</b>`+(r.loser==me?'. Ты проиграл ставку':'. Ты выиграл +'+Math.floor(r.bet/(n-1))):'Ничья, ставки возвращены'):!alive?'Ты вышел из игры 🎉 ждёшь итогов':r.tk?(isDef?'Ты берёшь, соперники подкидывают…':'Защитник берёт: подкидывай или жми «Готово»'):isDef?(und?'Ты отбиваешься: тапни карту (или «Беру»)':'Все отбито, ждём «Бито»'):me==att&&!t.length?'Твой ход: атакуй любой картой':und?'Защитник отбивается, можно подкинуть':t.length?'Подкидывай той же масти значения или жми «Бито»':'Ждём атаку';
+  el.innerHTML=`<div class="dfs"><div class="dtop"><button class="s" id="lv">✕</button><span>Банк ${r.bet*n} 💰</span><span>Козырь ${SU[r.trump]} · 🂠 ${r.deck.length}</span></div>
+  <div class="opp">${r.p.filter(x=>x!=me).map(x=>`<div class="op ${r.st=='play'&&x==att?'at':''} ${r.st=='play'&&x==def?'df':''}"><div class="av2">${x[0].toUpperCase()}</div><b>${x}</b><small>${r.out.includes(x)?'вышел':'🂠 '+(r.hands[x]||[]).length}</small></div>`).join('')}</div>
+  <div class="felt"><div class="tbl2">${t.map((x,i)=>`<div class="pr ${selT==i?'sel2':''}" data-t="${i}">${card(x.a)}${x.d>=0?card(x.d):''}</div>`).join('')||'<span style="color:#ffffff88">Стол пуст</span>'}</div></div>
+  <p class="st">${st}</p>
+  <div class="acts">${r.st=='play'&&alive?`${isDef&&und&&!r.tk?'<button id="tk" class="r">Беру</button>':''}${!isDef&&t.length&&r.tk?'<button id="bt3" class="g">Готово, пусть берёт</button>':''}${!isDef&&t.length&&!und&&!r.tk?'<button id="bt2" class="g">Бито</button>':''}`:''}</div>
+  <div class="hand2">${alive&&r.st=='play'?hand.map(k=>card(k,`data-h="${k}"`)).join(''):''}</div></div>`;
   el.querySelectorAll('[data-t]').forEach(d=>d.onclick=()=>{selT=+d.dataset.t;draw(c,r)});
   el.querySelectorAll('[data-h]').forEach(d=>d.onclick=()=>play(c,r,+d.dataset.h));
-  const tk=$('#tk'),b2=$('#bt2');if(tk)tk.onclick=()=>take(c,r);if(b2)b2.onclick=()=>bito(c,r);
+  const tk=$('#tk'),b2=$('#bt2');if(tk)tk.onclick=()=>take(c,r);if(b2)b2.onclick=()=>bito(c,r);const b3=$('#bt3');if(b3)b3.onclick=()=>takeFin(c,r);
   $('#lv').onclick=()=>lobby();
   if(r.st=='end'&&!paid&&!r['pd_'+me]&&r.p.includes(me)){paid=true;const a=!r.loser?r.bet:r.loser==me?0:r.bet+Math.floor(r.bet/(n-1));if(a)addBal(a);db.doc('rd/'+c).update({['pd_'+me]:true})}}
  lobby()}
