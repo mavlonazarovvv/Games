@@ -58,7 +58,7 @@ function shell(inner){A.innerHTML=`<div class="top"><b>👤 ${me}</b><span class
 <div class="row" style="margin:8px 0"><button class="${tab=='games'?'':'s'}" data-t="games">Игры</button><button class="${tab=='top'?'':'s'}" data-t="top">🏆</button><button class="${tab=='chat'?'':'s'}" data-t="chat">💬</button><button class="${tab=='profile'?'':'s'}" data-t="profile">Профиль</button>${me===ADM?`<button class="${tab=='admin'?'':'s'}" data-t="admin">Админ</button>`:''}</div><div id="v">${inner}</div>`;
  A.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{cleanup();tab=b.dataset.t;render()})}
 function render(){if(!U)return;cleanup();
- if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return top();if(tab=='chat')return chat();if(tab=='play')return;
+ if(tab=='profile')return profile();if(tab=='admin')return admin();if(tab=='top')return leaders();if(tab=='chat')return chat();if(tab=='play')return;
  const G=[['2048','🔢',g2048],['Змейка','🐍',snake],['Кликер','👆',clicker],['Крестики-нолики онлайн','❌',ttt]];
  shell(`<div class="grid">${G.map((g,i)=>`<div class="card gc" data-i="${i}"><b>${g[1]}</b>${g[0]}</div>`).join('')}</div><p class="m">Скоро: дурак (2–8 игроков), шашки, блок бласт.</p>`);
  A.querySelectorAll('[data-i]').forEach(c=>c.onclick=()=>{tab='play';shell('<div id="g"></div><button class="s" id="bk" style="margin-top:8px">← Назад</button>');$('#bk').onclick=()=>{cleanup();tab='games';render()};G[c.dataset.i][2]($('#g'))})}
@@ -83,7 +83,7 @@ function admin(){window._al=[];window._d=null;shell('<p class="m">Загрузк
 }
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function rec(g,s){const r=U.rec||{};if(s>(r[g]||0))ud(me).update({rec:{...r,[g]:s}})}
-function top(){shell('<p class="m">Загрузка…</p>');stop=db.collection('users').onSnapshot(us=>{const v=$('#v');if(!v)return;
+function leaders(){shell('<p class="m">Загрузка…</p>');stop=db.collection('users').onSnapshot(us=>{const v=$('#v');if(!v)return;
  v.innerHTML=['2048','Змейка','Кликер'].map(g=>{const L=us.docs.map(d=>[d.id,((d.data().rec||{})[g])||0]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10);
  return `<div class="card"><h3>🏆 ${g}</h3><table>${L.map((x,i)=>`<tr><td>${i+1} ${['🥇','🥈','🥉'][i]||''}</td><td>${x[0]}${x[0]==me?' (ты)':''}</td><td><b>${x[1]}</b></td></tr>`).join('')||'<tr><td class="m">Пока нет рекордов</td></tr>'}</table></div>`}).join('')})}
 function chat(){shell('<div class="card"><div id="ms" style="height:50vh;overflow:auto"></div></div><div class="row"><input id="ci" maxlength="300" placeholder="Сообщение"><button id="cs" style="flex:0 0 auto">➤</button></div>');
